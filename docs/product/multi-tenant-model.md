@@ -117,6 +117,8 @@ tenants/{userId}/projects/{projectId}/
 
 ### 4.1 客户看到什么
 
+> UI 布局与样式：[ui-design-system.md](./ui-design-system.md)
+
 | 页面 | 功能 |
 |------|------|
 | **注册 / 登录** | 创建账号，进入控制台 |

@@ -7,7 +7,8 @@
 | 租户 | Tenant | 注册用户；拥有多个 Project |
 | 项目 | Project | 用户下的独立营销工作区；含 intake、策略、脚本、ops |
 | 工作区 | Workspace | `tenants/{userId}/projects/{projectId}/` 逻辑根目录 |
-| Product UI | — | 客户使用的 Web/App，非 Git 仓库 |
+| Product UI | — | 客户使用的 Web/App，非 Git 仓库；样式见 ui-design-system.md |
+| Obligation | 待处理阻塞 | 合并 open user obligation；UI 收件箱 `/obligations`，非营销 todo |
 | Provisioning | — | 新建项目时复制模板、初始化目录 |
 | Vault | — | 按 projectId 隔离的密钥存储 |
 | Automation 总指挥 | Automation Commander | **全平台契约**：每个 Project 由 Automation 分阶段写代码、run-phase、更新 progress；用户只看进度 |

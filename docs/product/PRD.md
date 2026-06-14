@@ -441,6 +441,7 @@ Free：Intake + 可行性 + 现有营销盘点；**不** 含 run-phase 执行。
 ## 12. 附录
 
 - **产品实现技术文档**：[implementation.md](./implementation.md)
+- **产品 UI 样式规范**：[ui-design-system.md](./ui-design-system.md)
 - **Greenfield Identity Gate**：[greenfield-identity-gate.md](./greenfield-identity-gate.md)
 - Intake 字段说明：[../user-intake-guide.md](../user-intake-guide.md)
 - 部署指南：[../deployment-guide.md](../deployment-guide.md)

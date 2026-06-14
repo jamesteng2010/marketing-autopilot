@@ -1,6 +1,6 @@
 # Platform（v0.2 实现）
 
-面向客户的 **Product Layer** 实现代码。规格见 **[../docs/product/implementation.md](../docs/product/implementation.md)**。
+面向客户的 **Product Layer** 实现代码。规格见 **[../docs/product/implementation.md](../docs/product/implementation.md)**；UI 样式见 **[../docs/product/ui-design-system.md](../docs/product/ui-design-system.md)**。
 
 ## 目录规划
 

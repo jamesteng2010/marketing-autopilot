@@ -404,6 +404,27 @@
 
 ---
 
+## F16 — Product UI 样式与设计
+
+> 详述：[ui-design-system.md](./ui-design-system.md)
+
+| ID | 描述 | 验收标准 |
+|----|------|----------|
+| F16.1 | 设计文档 | ui-design-system.md 含 tokens、IA、分屏、组件 |
+| F16.2 | 心智模型 | Dashboard / Activity / Obligations 职责分离 documented |
+| F16.3 | 禁止 todo UI | 无 weekly marketing checklist；task 只读无 checkbox |
+| F16.4 | Obligations | Inbox 样式、排序、Snooze、无手动勾选完成 |
+| F16.5 | Dark theme | Control Tower Dark tokens 与 og.svg 一致 |
+| F16.6 | App Shell | 顶栏 project switch + obligation badge + 侧栏 nav |
+| F16.7 | Onboarding | Stepper Intake→Analysis→Goals→Strategy→Running |
+| F16.8 | Pattern 组件 | PhasePipeline、KpiHero、ActivityFeed、ObligationCard 等 listed |
+| F16.9 | Credentials UI | 无明文；Connected 状态展示 |
+| F16.10 | a11y | WCAG 2.1 AA 目标与 focus 环 documented |
+| F16.11 | MVP 范围 | P0–P2 屏幕优先级 listed |
+| F16.12 | 实现路径 | platform/web + Tailwind/shadcn 建议 |
+
+---
+
 ## F11 — 商业化与定价（v1.0）
 
 > 详述：[pricing.md](./pricing.md)
@@ -439,6 +460,7 @@
 | F7.13 | 产品数据 | product-data-connectors.md |
 | F7.14 | 实现技术 | implementation.md |
 | F7.15 | 身份门禁 | greenfield-identity-gate.md |
+| F7.16 | UI 样式 | ui-design-system.md |
 
 ---
 
