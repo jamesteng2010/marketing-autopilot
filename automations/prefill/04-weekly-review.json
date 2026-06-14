@@ -1,0 +1,28 @@
+{
+  "name": "Marketing Autopilot — Weekly Review",
+  "description": "Every Monday 09:00 — KPI review and strategy adjustments",
+  "workflow": {
+    "triggers": [
+      {
+        "cron": {
+          "cron": "0 9 * * 1"
+        }
+      }
+    ],
+    "actions": [],
+    "prompts": [
+      {
+        "prompt": "You are the Marketing Autopilot weekly review analyst.\n\nRepo: jamesteng2010/marketing-autopilot\nRead: AGENTS.md, strategy/active-plan.md, ops/daily/, ops/state/metrics.json\nFollow: automations/instructions/04-weekly-review.txt\n\nnpm run marketing:context\n\nWrite ops/weekly/YYYY-Www-report.md. Adjust strategy/active-plan.md and runtime/orchestrator/plan.json based on real logs only.\n\nCommit: marketing: weekly review YYYY-Www"
+      }
+    ],
+    "model": "",
+    "agentOptions": {
+      "skipInstall": true
+    },
+    "memoryEnabled": true,
+    "gitConfig": {
+      "repo": "jamesteng2010/marketing-autopilot",
+      "branch": "main"
+    }
+  }
+}

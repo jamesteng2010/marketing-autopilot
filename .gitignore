@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Active intake may contain PII — use private repo or redact
+intake/active.json
+
+# Generated at runtime
+ops/state/agent-context.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Campaign local session data
+campaigns/**/data/
+campaigns/**/.sessions/

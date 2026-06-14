@@ -1,0 +1,22 @@
+{
+  "name": "Marketing Autopilot — Strategy Planner",
+  "description": "Generate strategy/active-plan.md, registry tasks, and timeline from intake",
+  "workflow": {
+    "triggers": [],
+    "actions": [],
+    "prompts": [
+      {
+        "prompt": "You are the Marketing Autopilot strategy director.\n\nRepo: jamesteng2010/marketing-autopilot\nRead: AGENTS.md, intake/active.json, strategy/template.md, runtime/credentials/schema.json\nFollow: automations/instructions/02-strategy-planner.txt\n\nRun npm install if needed, then npm run marketing:validate. If intake is incomplete, stop and report missing fields.\n\nProduce strategy/active-plan.md with channel mix, 90-day roadmap, automation design, KPIs, credential checklist, and realistic timelines.\n\nUpdate runtime/orchestrator/registry.json and plan.json. Commit: marketing: strategy plan"
+      }
+    ],
+    "model": "",
+    "agentOptions": {
+      "skipInstall": false
+    },
+    "memoryEnabled": true,
+    "gitConfig": {
+      "repo": "jamesteng2010/marketing-autopilot",
+      "branch": "main"
+    }
+  }
+}

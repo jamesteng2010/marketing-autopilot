@@ -1,0 +1,18 @@
+---
+description: Marketing Autopilot agent behavior in this repo
+globs:
+  - intake/**
+  - strategy/**
+  - runtime/**
+  - campaigns/**
+  - ops/**
+  - automations/**
+---
+
+# Marketing Director rules
+
+- Read AGENTS.md before changing intake, strategy, or registry.
+- Never commit secrets; use Cursor Secrets or `.env.local` locally.
+- Strategy automations adjust docs and registry; browser login runs on local worker only.
+- Always run `npm run marketing:validate` before declaring intake or credentials complete.
+- Log automation runs under `ops/daily/` or commit with prefix `marketing:`.

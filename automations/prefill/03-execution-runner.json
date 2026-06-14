@@ -1,0 +1,28 @@
+{
+  "name": "Marketing Autopilot — Execution Runner",
+  "description": "Every 4 hours — run enabled orchestrator tasks when credentials are ready",
+  "workflow": {
+    "triggers": [
+      {
+        "cron": {
+          "cron": "0 */4 * * *"
+        }
+      }
+    ],
+    "actions": [],
+    "prompts": [
+      {
+        "prompt": "You are the Marketing Autopilot execution orchestrator.\n\nRepo: jamesteng2010/marketing-autopilot\nRead: AGENTS.md, strategy/active-plan.md, runtime/orchestrator/registry.json\nFollow: automations/instructions/03-execution-runner.txt\n\nnpm install\nnpm run marketing:validate\n\nIf credentials pending, log to ops/daily/ and stop.\nOtherwise run enabled tasks via npm run marketing:execute -- <taskId>.\n\nUpdate ops/state/metrics.json and ops/daily/YYYY-MM-DD-execution.md. Commit: marketing: execution YYYY-MM-DD"
+      }
+    ],
+    "model": "",
+    "agentOptions": {
+      "skipInstall": true
+    },
+    "memoryEnabled": true,
+    "gitConfig": {
+      "repo": "jamesteng2010/marketing-autopilot",
+      "branch": "main"
+    }
+  }
+}

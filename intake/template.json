@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "updatedAt": null,
+  "product": {
+    "name": "",
+    "url": "",
+    "oneLiner": "",
+    "description": "",
+    "pricingModel": "freemium"
+  },
+  "audience": {
+    "primary": "",
+    "geography": [],
+    "languages": ["en"],
+    "painPoints": []
+  },
+  "goals": {
+    "primaryKpi": "signups",
+    "targetValue": 0,
+    "deadline": "",
+    "secondary": []
+  },
+  "marketing": {
+    "channelsPreferred": [],
+    "channelsAvoid": [],
+    "budgetMonthlyUsd": 0,
+    "brandTone": "professional",
+    "complianceNotes": ""
+  },
+  "assets": {
+    "analyticsId": "",
+    "existingSocial": {},
+    "crm": "none"
+  },
+  "runtime": {
+    "preferred": "cloud",
+    "region": ""
+  },
+  "credentialsRequested": [],
+  "credentialsProvided": []
+}

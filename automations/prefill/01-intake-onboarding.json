@@ -1,0 +1,26 @@
+{
+  "name": "Marketing Autopilot — Onboarding Intake",
+  "description": "Collect product, audience, goals, and channel preferences; write intake/active.json",
+  "workflow": {
+    "triggers": [
+      {
+        "webhook": {}
+      }
+    ],
+    "actions": [],
+    "prompts": [
+      {
+        "prompt": "You are the Marketing Autopilot onboarding consultant.\n\nRepo: jamesteng2010/marketing-autopilot\nRead: AGENTS.md, intake/template.json, docs/user-intake-guide.md\nFollow: automations/instructions/01-intake-onboarding.txt\n\nWhen the user message contains marketing requirements, conduct a structured intake conversation. Persist answers to intake/active.json. Run npm run marketing:validate before declaring complete.\n\nNever write secret values to git. Output a clear summary and list next automation: Strategy Planner."
+      }
+    ],
+    "model": "",
+    "agentOptions": {
+      "skipInstall": false
+    },
+    "memoryEnabled": true,
+    "gitConfig": {
+      "repo": "jamesteng2010/marketing-autopilot",
+      "branch": "main"
+    }
+  }
+}
