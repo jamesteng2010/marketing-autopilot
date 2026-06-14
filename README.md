@@ -85,6 +85,7 @@ npm run marketing:dogfood:status
 ## 相关文档
 
 - [docs/product/implementation.md](docs/product/implementation.md) — **产品实现技术文档**（Platform API / UI / Worker）
+- [docs/product/automations.md](docs/product/automations.md) — Cursor Automations（5 个、trigger）
 - [docs/product/ui-design-system.md](docs/product/ui-design-system.md) — 产品 UI 样式与设计规范
 - [docs/product/greenfield-identity-gate.md](docs/product/greenfield-identity-gate.md) — 零营销客户身份门禁（Phase 1→2）
 - [docs/product/pricing.md](docs/product/pricing.md) — 全球定价

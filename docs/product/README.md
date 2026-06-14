@@ -16,6 +16,7 @@ Marketing Autopilot 官方产品文档目录。技术实现见 [`../architecture
 | [user-journey.md](./user-journey.md) | 客户 UI 旅程 | 产品、设计 |
 | [features.md](./features.md) | 功能规格与验收标准 | 研发、测试 |
 | [personas.md](./personas.md) | 目标用户与使用场景 | 产品、市场 |
+| [automations.md](./automations.md) | **Cursor Automations**（5 个、trigger、Worker 分工） |
 | [ui-design-system.md](./ui-design-system.md) | **产品 UI 样式与设计规范**（tokens、页面、组件、Obligations） |
 | [greenfield-identity-gate.md](./greenfield-identity-gate.md) | **零营销客户身份门禁**（Phase 1→2、infra.*、品牌邮箱） |
 | [goal-workshop.md](./goal-workshop.md) | 分析后 **目标共创**（KPI + 测量源） |
@@ -31,6 +32,7 @@ Marketing Autopilot 官方产品文档目录。技术实现见 [`../architecture
 PRD（为什么做、做什么）
   ├── implementation（怎么做 — 技术实现）
   ├── ui-design-system（客户端样式与组件规范）
+  ├── automations（5 个 Automation · trigger · Worker）
   ├── automation-commander（全用户 · 全项目执行契约）
   ├── existing-marketing-discovery（现有 SEO/GA/社媒盘点 → 增量营销）
   ├── goal-workshop（分析后 KPI 共创）

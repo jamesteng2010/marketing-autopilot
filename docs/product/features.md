@@ -461,6 +461,22 @@
 | F7.14 | 实现技术 | implementation.md |
 | F7.15 | 身份门禁 | greenfield-identity-gate.md |
 | F7.16 | UI 样式 | ui-design-system.md |
+| F7.17 | Automations | automations.md |
+
+---
+
+## F17 — Cursor Automations 与 Trigger
+
+> 详述：[automations.md](./automations.md)
+
+| ID | 描述 | 验收标准 |
+|----|------|----------|
+| F17.1 | 文档 | automations.md 列出 5 Automation + Worker 分工 |
+| F17.2 | 05 prepare | site-scan + prepare-analysis + npm script |
+| F17.3 | API analyze | POST /api/projects/:id/intake/analyze |
+| F17.4 | Webhook payload | userId/projectId/PROJECT_ROOT documented |
+| F17.5 | validate intake | validate-intake.mjs 最小必填 |
+| F17.6 | activity | prepare 写 analysis.started / site_scan_completed |
 
 ---
 

@@ -2,13 +2,24 @@
 
 Import prefill JSON into **Cursor → Automations → New automation**.
 
+**Full product spec:** [docs/product/automations.md](../docs/product/automations.md) — triggers, Platform Worker split, webhook payload.
+
 ## Recommended order
 
-1. **01-intake-onboarding** — Webhook or manual. Form + materials → `intake/active.json`.
+1. **01-intake-onboarding** — Webhook or manual. Form + materials → `intake/active.json`. *(optional)*
 2. **05-intake-analysis** — After materials uploaded. Produces `feasibility.md` → **user reviews in UI**.
-3. **02-strategy-planner** — After `userConfirmedAnalysis`. Full `active-plan.md` + scripts.
-4. **03-execution-runner** — Cron `0 */4 * * *`. Runs orchestrator when credentials ready.
-5. **04-weekly-review** — Cron `0 9 * * 1`. Adjusts strategy from ops logs.
+3. **02-strategy-planner** — After dual gate (`userConfirmedAnalysis` + `userConfirmedGoals`).
+4. **03-execution-runner** — Cron `0 */4 * * *`. *(SaaS: prefer Platform Worker `run-phase`)*
+5. **04-weekly-review** — Cron `0 9 * * 1`.
+
+## Automation 05 two-phase flow
+
+| Phase | Runner | Command |
+|-------|--------|---------|
+| **A — Prepare** | Platform / Node | `npm run marketing:analyze:prepare` or `POST .../intake/analyze` |
+| **B — LLM + feasibility** | Cursor Automation 05 | Webhook after phase A |
+
+Phase A: validate intake → passive site scan → `existing-marketing.json` → activity log → optional webhook.
 
 ## Settings checklist
 
@@ -17,12 +28,25 @@ Import prefill JSON into **Cursor → Automations → New automation**.
 | Repository | Your fork of `marketing-autopilot` |
 | Branch | `main` |
 | Git push | Enable if agent should commit ops + strategy |
-| Environment variables | Map keys from `runtime/credentials/schema.json` |
+| Environment variables | `PROJECT_ROOT`, `USER_ID`, `PROJECT_ID`, `CORRELATION_ID` from webhook |
 | Cloud vs worker | Strategy/review → Cloud; Playwright social → local worker |
 
-## Webhook (onboarding)
+## Webhook payload (Platform → Cursor)
 
-After saving automation 01, copy the webhook URL from the editor. POST JSON or plain text with user requirements; the agent continues in thread.
+```json
+{
+  "userId": "usr_xxx",
+  "projectId": "prj_yyy",
+  "workspaceRoot": "/path/to/project",
+  "correlationId": "run_xxx",
+  "env": {
+    "PROJECT_ROOT": "/path/to/project",
+    "USER_ID": "usr_xxx",
+    "PROJECT_ID": "prj_yyy",
+    "CORRELATION_ID": "run_xxx"
+  }
+}
+```
 
 ## Instructions source of truth
 

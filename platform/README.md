@@ -6,10 +6,12 @@
 
 ```
 platform/
-├── api/                 # REST：auth、projects、intake、goals、progress、obligations
-├── web/                 # Next.js：Intake → Analysis → Goal Workshop → Dashboard
+├── api/                 # REST — POST .../intake/analyze → Automation 05 prepare
+├── web/                 # Next.js + design-preview/
 └── worker/              # provisioning、run-phase cron、obligation/notification
 ```
+
+**Automation 05（已实现 skeleton）：** `POST /api/projects/:id/intake/analyze` → `runtime/analysis/prepare-analysis.mjs` → 可选 `CURSOR_AUTOMATION_05_WEBHOOK_URL`。见 [../docs/product/automations.md](../docs/product/automations.md)。
 
 ## 职责对照
 

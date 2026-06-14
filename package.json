@@ -11,7 +11,9 @@
     "marketing:execute": "node runtime/orchestrator/director.js execute",
     "marketing:phase": "node runtime/orchestrator/director.js run-phase",
     "marketing:dogfood:phase": "PROJECT_ROOT=projects/marketing-autopilot-launch node runtime/orchestrator/director.js run-phase week_1",
-    "marketing:dogfood:status": "PROJECT_ROOT=projects/marketing-autopilot-launch node runtime/orchestrator/director.js status"
+    "marketing:dogfood:status": "PROJECT_ROOT=projects/marketing-autopilot-launch node runtime/orchestrator/director.js status",
+    "marketing:analyze:prepare": "node runtime/analysis/prepare-analysis.mjs",
+    "marketing:analyze:scan": "node runtime/analysis/site-scan.mjs"
   },
   "engines": {
     "node": ">=18"

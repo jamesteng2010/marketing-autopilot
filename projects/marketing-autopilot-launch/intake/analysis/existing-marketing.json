@@ -1,0 +1,52 @@
+{
+  "discoveredAt": "2026-06-14T13:57:06.180Z",
+  "siteUrl": "https://github.com/jamesteng2010/marketing-autopilot",
+  "passiveScan": {
+    "seo": {
+      "titlePresent": true,
+      "title": "GitHub - jamesteng2010/marketing-autopilot: Cursor Automation framework for AI-driven marketing: intake, strategy, execution, and review loop · GitHub",
+      "metaDescription": "Cursor Automation framework for AI-driven marketing: intake, strategy, execution, and review loop - jamesteng2010/marketing-autopilot",
+      "h1Present": true,
+      "h1": "Search code, repositories, users, issues, pull requests...",
+      "hasSitemap": false,
+      "hasRobots": true,
+      "issues": []
+    },
+    "tags": {
+      "ga4MeasurementId": null,
+      "ga4MeasurementIds": [],
+      "gtmContainerId": null,
+      "metaPixelId": null
+    },
+    "socialLinksFound": []
+  },
+  "confidence": "low",
+  "userDeclared": {
+    "hasActiveMarketing": true,
+    "userSummary": "GitHub README CTA、创始人 X/LinkedIn 零散发帖、文档即内容；无 paid ads",
+    "channelsUserDeclared": [
+      {
+        "channelId": "website_seo",
+        "status": "active",
+        "notes": "GitHub README as landing"
+      },
+      {
+        "channelId": "social_organic",
+        "status": "active",
+        "notes": "Founder X/LinkedIn"
+      }
+    ]
+  },
+  "reconciled": {
+    "posture": "active_baseline",
+    "channels": []
+  },
+  "assetsNeededFromUser": [
+    {
+      "channelId": "website_seo",
+      "field": "sitemap.xml",
+      "reason": "No sitemap detected at /sitemap.xml",
+      "priority": "recommended"
+    }
+  ]
+}

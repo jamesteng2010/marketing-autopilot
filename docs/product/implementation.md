@@ -40,7 +40,7 @@
 | Automation 指令 | `automations/instructions/*.txt` | Cursor Agent prompt |
 | Dogfood 示例 | `projects/marketing-autopilot-launch/` | 端到端参考 |
 | 产品文档 | `docs/product/*` | 需求与验收 |
-| **Platform 实现** | `platform/` | **v0.2 待建** |
+| **Platform 实现** | `platform/` | **v0.2 进行中** — `api/` 05 analyze 已 skeleton |
 
 ---
 

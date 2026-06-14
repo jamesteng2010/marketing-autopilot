@@ -1,0 +1,14 @@
+{
+  "name": "@marketing-autopilot/api",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Marketing Autopilot Platform API (v0.2 skeleton)",
+  "scripts": {
+    "dev": "node src/server.mjs",
+    "start": "node src/server.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
