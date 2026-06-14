@@ -1,0 +1,22 @@
+{
+  "name": "Marketing Autopilot — Intake Analysis",
+  "description": "Analyze uploaded materials (text, URL, image, video, audio) and produce feasibility marketing report for user review",
+  "workflow": {
+    "triggers": [],
+    "actions": [],
+    "prompts": [
+      {
+        "prompt": "You are the Marketing Autopilot intake analyst.\n\nRepo: jamesteng2010/marketing-autopilot\nRead: docs/product/intake-and-materials.md, intake/active.json, materials.items, intake/analysis/feasibility.template.md\nFollow: automations/instructions/05-intake-analysis.txt\n\nPayload must include projectId. Analyze all pending materials. Write intake/analysis/feasibility.md and extracted.json. Summarize findings for the user in clear language. Do NOT generate full strategy or campaigns until userConfirmedAnalysis is true.\n\nCommit: intake: feasibility analysis"
+      }
+    ],
+    "model": "",
+    "agentOptions": {
+      "skipInstall": false
+    },
+    "memoryEnabled": true,
+    "gitConfig": {
+      "repo": "jamesteng2010/marketing-autopilot",
+      "branch": "main"
+    }
+  }
+}

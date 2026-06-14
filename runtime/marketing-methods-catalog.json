@@ -1,0 +1,387 @@
+{
+  "version": 1,
+  "description": "Canonical marketing methods catalog for intake, feasibility, and strategy. Human docs: docs/product/marketing-methods.md",
+  "categories": [
+    {
+      "id": "owned",
+      "label": "自有渠道 Owned",
+      "methods": [
+        {
+          "id": "website_seo",
+          "label": "官网与 SEO",
+          "summary": "落地页优化、关键词内容、技术 SEO",
+          "bestFor": ["b2c", "b2b", "saas", "local"],
+          "automationSupport": "partial",
+          "automationNotes": "内容生成、发布草稿；外链与核心词策略需人工",
+          "linkedActions": ["content.post", "metrics.collect"],
+          "linkedChannelIds": [],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [8, 12],
+          "humanApprovalUsuallyRequired": false
+        },
+        {
+          "id": "email_marketing",
+          "label": "邮件营销",
+          "summary": "订阅、培育序列、促销、通讯",
+          "bestFor": ["b2c", "b2b", "saas"],
+          "automationSupport": "high",
+          "automationNotes": "SMTP/API 发信、序列自动化；列表合规需人工确认",
+          "linkedActions": ["content.schedule", "metrics.collect"],
+          "linkedChannelIds": ["smtp"],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [2, 4],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "app_store_aso",
+          "label": "应用商店 ASO",
+          "summary": "标题、截图、关键词、评价管理",
+          "bestFor": ["mobile_app"],
+          "automationSupport": "low",
+          "automationNotes": "文案辅助；上架与评价回复多需人工",
+          "linkedActions": ["content.post"],
+          "linkedChannelIds": [],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [4, 8],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "owned_community",
+          "label": "自有社群",
+          "summary": "Discord、Telegram 频道、Slack 社区",
+          "bestFor": ["b2c", "creator", "saas"],
+          "automationSupport": "partial",
+          "linkedActions": ["content.post", "lead.search_groups"],
+          "linkedChannelIds": ["telegram"],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [4, 8],
+          "humanApprovalUsuallyRequired": false
+        },
+        {
+          "id": "content_marketing",
+          "label": "内容营销",
+          "summary": "博客、白皮书、案例、教程",
+          "bestFor": ["b2b", "saas"],
+          "automationSupport": "partial",
+          "linkedActions": ["content.post", "content.schedule"],
+          "linkedChannelIds": [],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [6, 12],
+          "humanApprovalUsuallyRequired": false
+        }
+      ]
+    },
+    {
+      "id": "paid",
+      "label": "付费渠道 Paid",
+      "methods": [
+        {
+          "id": "search_ads",
+          "label": "搜索广告",
+          "summary": "Google、Bing、百度等关键词竞价",
+          "bestFor": ["b2c", "b2b", "local"],
+          "automationSupport": "low",
+          "automationNotes": "可辅助落地页与报告；开户、预算、出价需人工批准",
+          "linkedActions": ["metrics.collect"],
+          "linkedChannelIds": ["google_ads"],
+          "requiresPaidBudget": true,
+          "typicalTimeToSignalWeeks": [1, 2],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "social_ads_meta",
+          "label": "Meta 社交广告",
+          "summary": "Facebook、Instagram 信息流与再营销",
+          "bestFor": ["b2c", "ecommerce", "creator"],
+          "automationSupport": "low",
+          "linkedActions": ["metrics.collect"],
+          "linkedChannelIds": ["meta", "facebook", "instagram"],
+          "requiresPaidBudget": true,
+          "typicalTimeToSignalWeeks": [1, 3],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "video_ads",
+          "label": "短视频/视频广告",
+          "summary": "TikTok、YouTube、抖音信息流",
+          "bestFor": ["b2c", "creator", "ecommerce"],
+          "automationSupport": "low",
+          "linkedActions": ["metrics.collect"],
+          "linkedChannelIds": ["tiktok", "youtube"],
+          "requiresPaidBudget": true,
+          "typicalTimeToSignalWeeks": [1, 3],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "linkedin_ads",
+          "label": "LinkedIn 广告",
+          "summary": "B2B 定向、Lead Gen 表单",
+          "bestFor": ["b2b", "saas"],
+          "automationSupport": "low",
+          "linkedActions": ["metrics.collect"],
+          "linkedChannelIds": ["linkedin"],
+          "requiresPaidBudget": true,
+          "typicalTimeToSignalWeeks": [2, 4],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "affiliate",
+          "label": "联盟 / 分成推广",
+          "summary": "Affiliate、KOL  CPS",
+          "bestFor": ["b2c", "ecommerce", "saas"],
+          "automationSupport": "partial",
+          "linkedActions": ["metrics.collect"],
+          "linkedChannelIds": ["stripe"],
+          "requiresPaidBudget": true,
+          "typicalTimeToSignalWeeks": [4, 8],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "offline_ads",
+          "label": "线下广告",
+          "summary": "电视、广播、地铁、户外广告",
+          "bestFor": ["brand", "local"],
+          "automationSupport": "none",
+          "automationNotes": "产品仅跟踪计划与预算，不自动执行",
+          "linkedActions": [],
+          "linkedChannelIds": [],
+          "requiresPaidBudget": true,
+          "typicalTimeToSignalWeeks": [4, 12],
+          "humanApprovalUsuallyRequired": true
+        }
+      ]
+    },
+    {
+      "id": "earned_social",
+      "label": "口碑与社交有机 Earned & Social",
+      "methods": [
+        {
+          "id": "social_organic",
+          "label": "社媒有机运营",
+          "summary": "FB、IG、X、LinkedIn、TikTok 日常发帖与互动",
+          "bestFor": ["b2c", "creator", "b2b"],
+          "automationSupport": "high",
+          "linkedActions": ["content.post", "content.schedule", "account.warmup", "metrics.collect"],
+          "linkedChannelIds": ["facebook", "instagram", "twitter", "linkedin", "tiktok"],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [2, 6],
+          "humanApprovalUsuallyRequired": false
+        },
+        {
+          "id": "influencer_kol",
+          "label": "KOL / 网红合作",
+          "summary": "测评、种草、赞助帖",
+          "bestFor": ["b2c", "ecommerce", "creator"],
+          "automationSupport": "low",
+          "automationNotes": "可辅助发现达人、起草合作邮件；合同与打款需人工",
+          "linkedActions": ["lead.search_profiles", "social.dm"],
+          "linkedChannelIds": ["instagram", "tiktok", "youtube"],
+          "requiresPaidBudget": true,
+          "typicalTimeToSignalWeeks": [2, 6],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "pr_media",
+          "label": "PR / 媒体",
+          "summary": "新闻稿、采访、行业媒体",
+          "bestFor": ["b2b", "saas", "brand"],
+          "automationSupport": "partial",
+          "linkedActions": ["content.post"],
+          "linkedChannelIds": [],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [4, 12],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "product_launch_platforms",
+          "label": "产品发布平台",
+          "summary": "Product Hunt、Hacker News、少数派等",
+          "bestFor": ["saas", "devtools"],
+          "automationSupport": "partial",
+          "linkedActions": ["content.post"],
+          "linkedChannelIds": [],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [1, 2],
+          "humanApprovalUsuallyRequired": true,
+          "regionNotes": "主要适用于北美/全球英语 tech 受众"
+        },
+        {
+          "id": "referral",
+          "label": "推荐计划 / 口碑",
+          "summary": "老带新奖励、邀请机制",
+          "bestFor": ["b2c", "saas"],
+          "automationSupport": "partial",
+          "linkedActions": ["metrics.collect"],
+          "linkedChannelIds": ["stripe"],
+          "requiresPaidBudget": true,
+          "typicalTimeToSignalWeeks": [4, 8],
+          "humanApprovalUsuallyRequired": true
+        }
+      ]
+    },
+    {
+      "id": "outbound",
+      "label": "外联与关系 Outbound",
+      "methods": [
+        {
+          "id": "cold_email",
+          "label": "冷邮件",
+          "summary": "B2B 外联、序列跟进",
+          "bestFor": ["b2b", "saas"],
+          "automationSupport": "high",
+          "automationNotes": "严格合规：CAN-SPAM、GDPR、退订",
+          "linkedActions": ["content.schedule"],
+          "linkedChannelIds": ["smtp"],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [2, 4],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "linkedin_outreach",
+          "label": "LinkedIn 外联",
+          "summary": "连接请求、InMail、跟进",
+          "bestFor": ["b2b"],
+          "automationSupport": "partial",
+          "linkedActions": ["social.connect", "social.dm"],
+          "linkedChannelIds": ["linkedin"],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [2, 6],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "community_outreach",
+          "label": "社群营销",
+          "summary": "目标群、论坛、Discord 价值互动",
+          "bestFor": ["b2c", "creator", "saas"],
+          "automationSupport": "high",
+          "linkedActions": ["lead.search_groups", "lead.comment", "social.dm"],
+          "linkedChannelIds": ["telegram", "facebook", "discord"],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [2, 4],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "social_dm",
+          "label": "社媒私信",
+          "summary": "IG、FB、Telegram 1 对 1",
+          "bestFor": ["b2c", "creator"],
+          "automationSupport": "high",
+          "linkedActions": ["social.dm", "lead.search_profiles"],
+          "linkedChannelIds": ["instagram", "facebook", "telegram"],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [1, 3],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "whatsapp_sales",
+          "label": "WhatsApp / 即时通讯销售",
+          "summary": "跟进、客服转化",
+          "bestFor": ["b2c", "local", "ecommerce"],
+          "automationSupport": "partial",
+          "linkedActions": ["social.dm"],
+          "linkedChannelIds": ["whatsapp"],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [1, 2],
+          "humanApprovalUsuallyRequired": true,
+          "regionNotes": "拉美、中东、东南亚、部分欧洲常用"
+        },
+        {
+          "id": "events",
+          "label": "展会 / 线下活动",
+          "summary": "演讲、展位、meetup",
+          "bestFor": ["b2b", "local"],
+          "automationSupport": "none",
+          "linkedActions": [],
+          "linkedChannelIds": [],
+          "requiresPaidBudget": true,
+          "typicalTimeToSignalWeeks": [4, 12],
+          "humanApprovalUsuallyRequired": true
+        }
+      ]
+    },
+    {
+      "id": "partnership",
+      "label": "合作 Partnership",
+      "methods": [
+        {
+          "id": "channel_reseller",
+          "label": "渠道分销",
+          "summary": "代理商、reseller",
+          "bestFor": ["b2b", "saas"],
+          "automationSupport": "low",
+          "linkedActions": [],
+          "linkedChannelIds": [],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [8, 24],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "integration_partnership",
+          "label": "集成合作",
+          "summary": "与互补产品 API/ marketplace 互通",
+          "bestFor": ["saas", "devtools"],
+          "automationSupport": "low",
+          "linkedActions": [],
+          "linkedChannelIds": [],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [8, 16],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "marketplace",
+          "label": "平台/marketplace",
+          "summary": "App Store、亚马逊、淘宝、Shopee",
+          "bestFor": ["ecommerce", "mobile_app"],
+          "automationSupport": "partial",
+          "linkedActions": ["content.post", "metrics.collect"],
+          "linkedChannelIds": [],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [4, 12],
+          "humanApprovalUsuallyRequired": true
+        }
+      ]
+    },
+    {
+      "id": "product_led",
+      "label": "产品驱动 Product-led",
+      "methods": [
+        {
+          "id": "freemium_plg",
+          "label": "Freemium / 免费试用",
+          "summary": "产品本身拉新与转化",
+          "bestFor": ["saas"],
+          "automationSupport": "partial",
+          "linkedActions": ["metrics.collect"],
+          "linkedChannelIds": ["stripe"],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [2, 8],
+          "humanApprovalUsuallyRequired": false
+        },
+        {
+          "id": "viral_loops",
+          "label": "病毒/邀请机制",
+          "summary": "邀请奖励、分享解锁",
+          "bestFor": ["b2c", "saas"],
+          "automationSupport": "partial",
+          "linkedActions": ["metrics.collect"],
+          "linkedChannelIds": [],
+          "requiresPaidBudget": true,
+          "typicalTimeToSignalWeeks": [4, 12],
+          "humanApprovalUsuallyRequired": true
+        },
+        {
+          "id": "cro",
+          "label": "落地页 CRO",
+          "summary": "A/B 测试、转化优化",
+          "bestFor": ["b2c", "b2b", "saas"],
+          "automationSupport": "partial",
+          "linkedActions": ["metrics.collect"],
+          "linkedChannelIds": [],
+          "requiresPaidBudget": false,
+          "typicalTimeToSignalWeeks": [2, 6],
+          "humanApprovalUsuallyRequired": true
+        }
+      ]
+    }
+  ]
+}

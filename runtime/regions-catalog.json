@@ -1,0 +1,164 @@
+{
+  "version": 1,
+  "description": "Regional marketing profiles. Used with intake.audience.geography for feasibility scoring.",
+  "regions": {
+    "US": {
+      "label": "美国",
+      "countryCodes": ["US"],
+      "languages": ["en"],
+      "recommendedMethodIds": [
+        "website_seo", "search_ads", "social_ads_meta", "email_marketing",
+        "social_organic", "cold_email", "linkedin_outreach", "product_launch_platforms",
+        "content_marketing", "freemium_plg"
+      ],
+      "recommendedChannelIds": ["google_ads", "meta", "facebook", "instagram", "twitter", "linkedin", "smtp"],
+      "weakOrAvoidMethodIds": ["offline_ads"],
+      "avoidChannelIds": [],
+      "avoidNotes": [],
+      "compliance": ["CAN-SPAM", "FTC endorsement disclosure", "CCPA (CA)"],
+      "searchEngine": "google",
+      "messagingApps": ["sms", "email", "imessage"],
+      "privateDomainNotes": "Email + SMS 为主；WhatsApp 较弱"
+    },
+    "EU": {
+      "label": "西欧/欧盟（泛）",
+      "countryCodes": ["DE", "FR", "NL", "ES", "IT", "PL", "SE", "EU"],
+      "languages": ["en", "de", "fr", "es", "it"],
+      "recommendedMethodIds": [
+        "website_seo", "search_ads", "social_ads_meta", "email_marketing",
+        "social_organic", "content_marketing", "linkedin_ads", "linkedin_outreach"
+      ],
+      "recommendedChannelIds": ["google_ads", "meta", "instagram", "linkedin", "smtp"],
+      "weakOrAvoidMethodIds": ["social_dm"],
+      "avoidNotes": ["冷 DM 需 GDPR 合法依据；严格 opt-in"],
+      "compliance": ["GDPR", "ePrivacy", "DSA"],
+      "searchEngine": "google",
+      "messagingApps": ["email", "whatsapp"],
+      "privateDomainNotes": "多语言落地页必需；邮件营销 opt-in 严格"
+    },
+    "CN": {
+      "label": "中国大陆",
+      "countryCodes": ["CN"],
+      "languages": ["zh-CN"],
+      "recommendedMethodIds": [
+        "website_seo", "search_ads", "video_ads", "social_organic",
+        "content_marketing", "owned_community", "influencer_kol", "marketplace"
+      ],
+      "recommendedChannelIds": ["wechat", "douyin", "xiaohongshu", "weibo", "baidu"],
+      "weakOrAvoidMethodIds": [
+        "social_ads_meta", "product_launch_platforms", "cold_email"
+      ],
+      "avoidChannelIds": ["facebook", "instagram", "twitter", "google_ads"],
+      "avoidNotes": [
+        "Meta/Google 主平台在中国大陆不可用或极弱",
+        "私域：企微、微信群、小程序",
+        "需 ICP 备案与广告法合规"
+      ],
+      "compliance": ["广告法", "网络安全法", "个人信息保护法 PIPL"],
+      "searchEngine": "baidu",
+      "messagingApps": ["wechat", "enterprise_wechat"],
+      "privateDomainNotes": "微信生态为核心；抖音/小红书种草"
+    },
+    "SEA": {
+      "label": "东南亚",
+      "countryCodes": ["SG", "MY", "TH", "ID", "PH", "VN"],
+      "languages": ["en", "id", "th", "vi"],
+      "recommendedMethodIds": [
+        "social_organic", "social_ads_meta", "video_ads", "community_outreach",
+        "social_dm", "whatsapp_sales", "marketplace", "influencer_kol"
+      ],
+      "recommendedChannelIds": ["facebook", "instagram", "tiktok", "telegram", "whatsapp", "shopee"],
+      "weakOrAvoidMethodIds": ["linkedin_outreach", "product_launch_platforms"],
+      "avoidNotes": ["Mobile-first；价格敏感；多语言"],
+      "compliance": ["各国 PDPA 变体", "Shopee/Lazada 平台规则"],
+      "searchEngine": "google",
+      "messagingApps": ["whatsapp", "line", "telegram"],
+      "privateDomainNotes": "FB + TikTok + 电商 marketplace 组合常见"
+    },
+    "JP": {
+      "label": "日本",
+      "countryCodes": ["JP"],
+      "languages": ["ja"],
+      "recommendedMethodIds": [
+        "website_seo", "search_ads", "social_organic", "content_marketing",
+        "influencer_kol", "marketplace"
+      ],
+      "recommendedChannelIds": ["line", "twitter", "instagram", "yahoo_jp"],
+      "weakOrAvoidMethodIds": ["cold_email", "social_dm"],
+      "avoidNotes": ["日语本地化与精细落地页；冷 outreach 效果差"],
+      "compliance": ["APPI"],
+      "searchEngine": "google_jp_yahoo",
+      "messagingApps": ["line"],
+      "privateDomainNotes": "LINE 官方账号 + X + 精细 UI"
+    },
+    "MENA": {
+      "label": "中东/北非（泛）",
+      "countryCodes": ["AE", "SA", "EG", "QA", "MENA"],
+      "languages": ["ar", "en"],
+      "recommendedMethodIds": [
+        "social_organic", "social_ads_meta", "video_ads", "influencer_kol",
+        "whatsapp_sales", "community_outreach"
+      ],
+      "recommendedChannelIds": ["instagram", "snapchat", "whatsapp", "tiktok"],
+      "weakOrAvoidMethodIds": ["product_launch_platforms"],
+      "avoidNotes": ["文化/宗教敏感；阿语内容"],
+      "compliance": ["本地广告法规", "宗教与文化审查"],
+      "searchEngine": "google",
+      "messagingApps": ["whatsapp"],
+      "privateDomainNotes": "Instagram + Snapchat + WhatsApp 商业"
+    },
+    "LATAM": {
+      "label": "拉丁美洲",
+      "countryCodes": ["BR", "MX", "AR", "CO", "CL", "LATAM"],
+      "languages": ["es", "pt"],
+      "recommendedMethodIds": [
+        "social_organic", "social_ads_meta", "video_ads", "whatsapp_sales",
+        "influencer_kol", "community_outreach"
+      ],
+      "recommendedChannelIds": ["instagram", "whatsapp", "facebook", "tiktok"],
+      "weakOrAvoidMethodIds": ["linkedin_outreach"],
+      "avoidNotes": ["葡语/西语内容；WhatsApp 转化路径"],
+      "compliance": ["LGPD (BR)", "本地消费者法"],
+      "searchEngine": "google",
+      "messagingApps": ["whatsapp"],
+      "privateDomainNotes": "WhatsApp 商务 + IG 为主"
+    },
+    "GLOBAL_EN": {
+      "label": "全球英语（无单一国家）",
+      "countryCodes": ["GLOBAL"],
+      "languages": ["en"],
+      "recommendedMethodIds": [
+        "website_seo", "social_organic", "content_marketing", "email_marketing",
+        "product_launch_platforms", "freemium_plg", "community_outreach"
+      ],
+      "recommendedChannelIds": ["twitter", "linkedin", "telegram", "smtp"],
+      "weakOrAvoidMethodIds": ["offline_ads"],
+      "avoidNotes": ["仍需在 feasibility 中细化到具体国家"],
+      "compliance": ["视目标国叠加"],
+      "searchEngine": "google",
+      "messagingApps": ["email", "telegram"],
+      "privateDomainNotes": "Tech/SaaS 默认画像；PH/HN 发布有效"
+    }
+  },
+  "channelIdGlossary": {
+    "wechat": "微信/公众号/小程序",
+    "douyin": "抖音",
+    "xiaohongshu": "小红书",
+    "weibo": "微博",
+    "baidu": "百度搜索/信息流",
+    "line": "LINE",
+    "yahoo_jp": "Yahoo! Japan",
+    "shopee": "Shopee",
+    "discord": "Discord",
+    "youtube": "YouTube",
+    "tiktok": "TikTok",
+    "whatsapp": "WhatsApp Business",
+    "snapchat": "Snapchat"
+  },
+  "scoringHints": {
+    "fitHigh": "methodId 在 region.recommendedMethodIds 且 channel 可用",
+    "fitMedium": "method 可用但非首选或 automationSupport=partial",
+    "fitLow": "在 weakOrAvoidMethodIds 或 avoidChannelIds",
+    "fitBlocked": "avoidChannelIds 命中且无法律/业务例外"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "productSummary": "Marketing Autopilot — AI-driven marketing SaaS for indie devs and small teams. Intake (multimodal) → feasibility by region → strategy + Cursor Automation scripts → reporting + human-in-the-loop for verifications.",
+  "valuePropositions": [
+    "Turn product docs and media into a regional marketing plan without hiring an agency",
+    "Country-aware channel recommendations (CN vs US vs SEA)",
+    "Dogfood your own framework: open-source engine + upcoming UI",
+    "Multi-project isolation for founders running several products",
+    "Conservative automation with approval gates for cold DM and account creation"
+  ],
+  "audienceHints": [
+    "Cursor / AI-native developers",
+    "Solo founders with shipped product, zero marketing hire",
+    "Chinese founders targeting both domestic and global markets",
+    "Teams already using GitHub + automations"
+  ],
+  "competitorsMentioned": [
+    "Generic AI copy tools (Jasper, etc.) — we execute + plan, not just write",
+    "HubSpot / Mailchimp — too heavy for indie stage",
+    "Manual Cursor prompts — no catalog, no region matrix, no ops loop"
+  ],
+  "brandTone": "Professional, builder-friendly, honest about beta limits; bilingual CN/EN",
+  "visualStyle": "Developer docs aesthetic; diagrams over hype; GitHub README as primary landing for now",
+  "contentAssetsAvailable": {
+    "images": 0,
+    "videos": 0,
+    "audio": 0,
+    "documents": 12,
+    "hasLogo": false
+  },
+  "urlsCrawled": [
+    "https://github.com/jamesteng2010/marketing-autopilot"
+  ],
+  "quotesFromMaterials": [
+    "客户使用 Web 界面，不需要 clone 本仓库",
+    "按 projectId 生成策略与脚本，执行发帖/获客/加好友等，并汇报"
+  ],
+  "confidence": "high",
+  "gaps": [
+    "No public marketing landing page yet — GitHub README is CTA",
+    "No product demo video",
+    "No GA4 configured",
+    "Product UI v0.2 not shipped — message must set expectations"
+  ],
+  "methodFeasibility": [
+    {
+      "methodId": "content_marketing",
+      "region": "GLOBAL_EN",
+      "fit": "high",
+      "automatable": "partial",
+      "rationale": "Rich docs in repo; PH/HN/dev Twitter love builder stories"
+    },
+    {
+      "methodId": "product_launch_platforms",
+      "region": "US",
+      "fit": "high",
+      "automatable": "partial",
+      "rationale": "Product Hunt fit for dev tools; needs landing + demo"
+    },
+    {
+      "methodId": "social_organic",
+      "region": "GLOBAL_EN",
+      "fit": "high",
+      "automatable": "high",
+      "rationale": "Twitter/X + LinkedIn builder audience; thread format"
+    },
+    {
+      "methodId": "community_outreach",
+      "region": "GLOBAL_EN",
+      "fit": "medium",
+      "automatable": "partial",
+      "rationale": "Indie Hackers, Cursor Discord, dev Telegram — value-first posts"
+    },
+    {
+      "methodId": "owned_community",
+      "region": "CN",
+      "fit": "medium",
+      "automatable": "partial",
+      "rationale": "WeChat/Telegram CN dev groups after ICP 备案 if web launch in CN"
+    },
+    {
+      "methodId": "content_marketing",
+      "region": "CN",
+      "fit": "high",
+      "automatable": "partial",
+      "rationale": "知乎/掘金/公众号长文：AI+营销自动化、Cursor 实践"
+    },
+    {
+      "methodId": "social_organic",
+      "region": "CN",
+      "fit": "medium",
+      "automatable": "low",
+      "rationale": "小红书/抖音需短视频资产；微博可发技术 thread"
+    },
+    {
+      "methodId": "search_ads",
+      "region": "US",
+      "fit": "low",
+      "automatable": "low",
+      "rationale": "Budget $200/mo; brand unknown — defer to month 3"
+    },
+    {
+      "methodId": "social_dm",
+      "region": "GLOBAL_EN",
+      "fit": "low",
+      "automatable": "high",
+      "rationale": "Not approved in intake; avoid for brand launch"
+    },
+    {
+      "methodId": "freemium_plg",
+      "region": "GLOBAL_EN",
+      "fit": "medium",
+      "automatable": "partial",
+      "rationale": "Open repo + future UI waitlist as PLG wedge"
+    }
+  ],
+  "recommendedMethodIds": [
+    "content_marketing",
+    "social_organic",
+    "product_launch_platforms",
+    "community_outreach",
+    "freemium_plg"
+  ]
+}

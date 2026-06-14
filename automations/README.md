@@ -4,10 +4,11 @@ Import prefill JSON into **Cursor → Automations → New automation**.
 
 ## Recommended order
 
-1. **01-intake-onboarding** — Webhook trigger (or run manually). User sends requirements; agent writes `intake/active.json`.
-2. **02-strategy-planner** — Manual trigger after intake complete. Creates `strategy/active-plan.md`.
-3. **03-execution-runner** — Cron `0 */4 * * *`. Runs orchestrator tasks when credentials ready.
-4. **04-weekly-review** — Cron `0 9 * * 1`. Adjusts strategy from ops logs.
+1. **01-intake-onboarding** — Webhook or manual. Form + materials → `intake/active.json`.
+2. **05-intake-analysis** — After materials uploaded. Produces `feasibility.md` → **user reviews in UI**.
+3. **02-strategy-planner** — After `userConfirmedAnalysis`. Full `active-plan.md` + scripts.
+4. **03-execution-runner** — Cron `0 */4 * * *`. Runs orchestrator when credentials ready.
+5. **04-weekly-review** — Cron `0 9 * * 1`. Adjusts strategy from ops logs.
 
 ## Settings checklist
 

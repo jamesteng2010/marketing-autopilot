@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "currentPhase": "week_1",
+  "phases": {
+    "week_1": {
+      "label": "Example Week 1",
+      "taskIds": [],
+      "successCriteria": { "artifactsExist": [] },
+      "nextPhase": "week_2"
+    }
+  }
+}

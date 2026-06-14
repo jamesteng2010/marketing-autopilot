@@ -1,5 +1,7 @@
 # Marketing Autopilot — Product Concept
 
+> 正式产品文档见 **[product/PRD.md](./product/PRD.md)**（PRD、用户旅程、功能规格、路线图）。
+
 ## Vision (English)
 
 Marketing Autopilot is a **GitHub-backed Cursor Automation system** that turns vague marketing intent into a **repeatable, measurable, code-driven campaign**.
@@ -92,21 +94,26 @@ Every week the agent:
 
 ## 产品概念（中文）
 
-Marketing Autopilot 是一个 **连接 GitHub 仓库的 Cursor 自动化营销系统**，把用户的营销需求变成 **可执行、可度量、可迭代的代码化 campaign**。
+Marketing Autopilot 是 **面向客户的营销自动化 SaaS 平台**（不是让客户 clone GitHub 仓库）。
 
-### 核心流程
+### 核心流程（每个 User · 每个 Project 相同）
 
-1. **信息采集** — 用户提供产品描述、目标用户、营销目标、预算、渠道偏好等；Automation 写入 `intake/active.json`，缺项则追问。
-2. **策略制定** — 根据信息输出 `strategy/active-plan.md`：渠道组合、90 天路线图、KPI、自动化会做什么、预计多久达成什么目标。
-3. **代码与部署** — 生成 campaign 脚本，注册到 orchestrator；按需部署到 Cursor Cloud、EC2 或本机 Worker；缺少 AWS / Stripe / 手机号 / Telegram session 等时再向用户索取。
-4. **复盘迭代** — 定时 Automation 读日志与指标，调整策略并提交 git。
+1. **注册 / 创建项目** — Provisioning 独立工作区；同一用户可有多个项目。  
+2. **UI 信息采集** — Automation 写入 **本项目** intake；并收集 **现有营销**（SEO、GA、Facebook、广告等）。  
+3. **可行性 + Goal Workshop** — 分析后 **与用户共创** KPI 与测量源；可选接产品 DB/API。  
+4. **Strategy Planner** — 生成本项目 phases/campaigns；手段集成 + L1/L2/L3 监控。  
+5. **Phase Loop** — Execution `run-phase`；用户只看 progress。  
+6. **复盘迭代** — Weekly Review 调整 **本项目** phases/plan；与别的项目完全隔离。
 
 ### 设计原则
 
-- **策略层 vs 执行层分离** — Cursor Automation 改策略和配置；浏览器登录、长连接监听等放在合适的基础设施上。
-- **一切可追溯** — intake、strategy、ops 日志都在 git 里（密钥除外）。
-- **保守启动** — 先小流量验证，再放大；内置 rate limit 和安全配置模板。
-- **通用框架** — 本仓库不含具体产品；每个客户/项目复制仓库或 fork 后填 intake 即可。
+- **UI 优先** — 客户只用界面，不要求 git / npm。  
+- **Automation 总指挥** — 全用户、全项目统一；禁止向用户发手工营销 todo。  
+- **用户 → 多项目 → 完全隔离** — intake、phases、脚本、ops、凭证均按 projectId 分隔。  
+- **策略层 vs 执行层分离** — Automation 改策略与代码；浏览器登录等在 Worker 上按项目运行。  
+- **保守启动** — 小流量验证后再放大。
+
+详见 [product/automation-commander.md](./product/automation-commander.md) · [product/multi-tenant-model.md](./product/multi-tenant-model.md)。
 
 ---
 

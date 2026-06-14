@@ -1,0 +1,102 @@
+{
+  "version": 2,
+  "description": "Canonical activity event types: user actions + all Automation work on a project (analysis, planning, code, execution, accounts, marketing)",
+  "levels": {
+    "user": "Account-wide: auth, billing, project CRUD",
+    "project": "Within one projectId: user UI actions + Automation runs"
+  },
+  "categories": {
+    "user.account": "Registration, login, profile",
+    "user.project": "Project CRUD and navigation",
+    "user.intake": "User fills forms and uploads materials",
+    "user.response": "User confirms, provides credentials, verifies",
+    "automation.analysis": "Market/material/site/existing-marketing analysis",
+    "automation.strategy": "Plans, phases, registry, feasibility output",
+    "automation.code": "Generated or updated campaign scripts and artifacts",
+    "automation.execution": "run-phase, tasks, cron runs",
+    "automation.marketing": "Outbound marketing actions (post, DM, account ops)",
+    "automation.review": "Weekly review and plan adjustments",
+    "system.notification": "Reminders and alerts"
+  },
+  "events": [
+    { "type": "user.registered", "category": "user.account", "level": "user", "actor": "user", "description": "Account created" },
+    { "type": "user.logged_in", "category": "user.account", "level": "user", "actor": "user", "description": "Successful login" },
+    { "type": "user.logged_out", "category": "user.account", "level": "user", "actor": "user", "description": "Logout" },
+    { "type": "user.profile_updated", "category": "user.account", "level": "user", "actor": "user", "description": "Profile or notification prefs changed" },
+    { "type": "billing.plan_changed", "category": "user.account", "level": "user", "actor": "user|system", "description": "Subscription tier or scope changed" },
+    { "type": "project.created", "category": "user.project", "level": "user", "actor": "user", "description": "New projectId provisioned" },
+    { "type": "project.archived", "category": "user.project", "level": "user", "actor": "user", "description": "Project archived" },
+    { "type": "project.opened", "category": "user.project", "level": "project", "actor": "user", "description": "User opened project in UI" },
+    { "type": "intake.form_saved", "category": "user.intake", "level": "project", "actor": "user", "description": "Intake fields saved" },
+    { "type": "intake.material_uploaded", "category": "user.intake", "level": "project", "actor": "user", "description": "Material added to library" },
+    { "type": "intake.material_removed", "category": "user.intake", "level": "project", "actor": "user", "description": "Material deleted" },
+    { "type": "intake.analysis_requested", "category": "user.intake", "level": "project", "actor": "user", "description": "User clicked start analysis" },
+    { "type": "intake.feasibility_confirmed", "category": "user.response", "level": "project", "actor": "user", "description": "userConfirmedAnalysis=true" },
+    { "type": "goals.workshop_started", "category": "user.response", "level": "project", "actor": "user", "description": "User opened Goal Workshop" },
+    { "type": "goals.workshop_completed", "category": "user.response", "level": "project", "actor": "user", "description": "userConfirmedGoals=true" },
+    { "type": "intake.feasibility_rejected", "category": "user.response", "level": "project", "actor": "user", "description": "User sent back for more materials" },
+    { "type": "credential.provided", "category": "user.response", "level": "project", "actor": "user", "description": "User saved credential ref" },
+    { "type": "user_input.provided", "category": "user.response", "level": "project", "actor": "user", "description": "User filled pending field" },
+    { "type": "verification.completed", "category": "user.response", "level": "project", "actor": "user", "description": "User confirmed verification done" },
+    { "type": "approval.granted", "category": "user.response", "level": "project", "actor": "user", "description": "User approved outbound batch" },
+    { "type": "strategy.viewed", "category": "user.project", "level": "project", "actor": "user", "description": "User opened strategy preview" },
+    { "type": "progress.viewed", "category": "user.project", "level": "project", "actor": "user", "description": "Dashboard or timeline viewed" },
+
+    { "type": "automation.run_started", "category": "automation.execution", "level": "project", "actor": "automation", "description": "Automation run began (analysis/planner/execution/review)", "payloadHints": ["automationName", "runId"] },
+    { "type": "automation.run_completed", "category": "automation.execution", "level": "project", "actor": "automation", "description": "Automation run finished successfully" },
+    { "type": "automation.run_failed", "category": "automation.execution", "level": "project", "actor": "automation", "description": "Automation run failed", "payloadHints": ["errorSummary"] },
+
+    { "type": "analysis.started", "category": "automation.analysis", "level": "project", "actor": "automation", "description": "Intake Analysis Automation started" },
+    { "type": "analysis.material_processed", "category": "automation.analysis", "level": "project", "actor": "automation", "description": "Single material analyzed", "payloadHints": ["materialId", "materialType"] },
+    { "type": "analysis.site_scan_completed", "category": "automation.analysis", "level": "project", "actor": "automation", "description": "Passive site scan for SEO/GA/Pixel/social links", "payloadHints": ["siteUrl", "signalsFound[]"] },
+    { "type": "analysis.existing_marketing_merged", "category": "automation.analysis", "level": "project", "actor": "automation", "description": "existing-marketing.json written" },
+    { "type": "analysis.market_feasibility_scored", "category": "automation.analysis", "level": "project", "actor": "automation", "description": "Method/region feasibility scored", "payloadHints": ["methodFeasibilityCount", "regions[]"] },
+    { "type": "analysis.completed", "category": "automation.analysis", "level": "project", "actor": "automation", "description": "feasibility.md + extracted.json ready" },
+
+    { "type": "strategy.plan_created", "category": "automation.strategy", "level": "project", "actor": "automation", "description": "strategy/active-plan.md written", "payloadHints": ["planVersion"] },
+    { "type": "strategy.phases_defined", "category": "automation.strategy", "level": "project", "actor": "automation", "description": "phases.json created or updated", "payloadHints": ["phaseIds[]", "currentPhase"] },
+    { "type": "strategy.registry_updated", "category": "automation.strategy", "level": "project", "actor": "automation", "description": "registry.json tasks registered", "payloadHints": ["taskIds[]", "enabledCount"] },
+    { "type": "strategy.progress_initialized", "category": "automation.strategy", "level": "project", "actor": "automation", "description": "ops/progress.json initialized" },
+
+    { "type": "code.campaign_created", "category": "automation.code", "level": "project", "actor": "automation", "description": "New campaigns/{slug}/ scaffold", "payloadHints": ["slug", "taskId"] },
+    { "type": "code.campaign_updated", "category": "automation.code", "level": "project", "actor": "automation", "description": "campaign script or config changed", "payloadHints": ["slug", "files[]"] },
+    { "type": "code.artifact_generated", "category": "automation.code", "level": "project", "actor": "automation", "description": "Landing, OG, content draft, etc.", "payloadHints": ["artifactType", "path"] },
+
+    { "type": "execution.phase_started", "category": "automation.execution", "level": "project", "actor": "automation", "description": "run-phase began", "payloadHints": ["phaseId"] },
+    { "type": "execution.phase_completed", "category": "automation.execution", "level": "project", "actor": "automation", "description": "Phase successCriteria met", "payloadHints": ["phaseId", "nextPhase"] },
+    { "type": "execution.task_started", "category": "automation.execution", "level": "project", "actor": "automation", "description": "Registry task run began", "payloadHints": ["taskId", "command"] },
+    { "type": "execution.task_completed", "category": "automation.execution", "level": "project", "actor": "automation", "description": "Registry task finished", "payloadHints": ["taskId", "summary"] },
+    { "type": "execution.task_failed", "category": "automation.execution", "level": "project", "actor": "automation", "description": "Task failed", "payloadHints": ["taskId", "errorSummary"] },
+
+    { "type": "marketing.action.executed", "category": "automation.marketing", "level": "project", "actor": "automation", "description": "Marketing action from action-catalog", "payloadHints": ["actionId", "channel", "accountId", "summary", "actionLogRef"] },
+    { "type": "account.create_started", "category": "automation.marketing", "level": "project", "actor": "automation", "description": "Account creation flow started", "payloadHints": ["channel", "accountId"] },
+    { "type": "account.created", "category": "automation.marketing", "level": "project", "actor": "automation", "description": "Social/ad account created or bound", "payloadHints": ["channel", "accountId", "pageUrl"] },
+    { "type": "account.login_completed", "category": "automation.marketing", "level": "project", "actor": "automation", "description": "Session saved for account", "payloadHints": ["channel", "accountId"] },
+    { "type": "account.status_changed", "category": "automation.marketing", "level": "project", "actor": "automation", "description": "Account state transition", "payloadHints": ["channel", "accountId", "from", "to"] },
+    { "type": "content.generated", "category": "automation.marketing", "level": "project", "actor": "automation", "description": "Copy/post draft generated", "payloadHints": ["channel", "format", "path"] },
+    { "type": "content.posted", "category": "automation.marketing", "level": "project", "actor": "automation", "description": "Content published to channel", "payloadHints": ["channel", "accountId", "postUrl"] },
+    { "type": "metrics.collected", "category": "automation.marketing", "level": "project", "actor": "automation", "description": "Metrics snapshot updated", "payloadHints": ["source", "metricsPath"] },
+    { "type": "metrics.baseline_established", "category": "automation.analysis", "level": "project", "actor": "automation", "description": "goals.measurement.baseline set from GA/DB/API", "payloadHints": ["source", "value"] },
+
+    { "type": "credential.requested", "category": "automation.execution", "level": "project", "actor": "automation", "description": "Vault field required" },
+    { "type": "user_input.requested", "category": "automation.execution", "level": "project", "actor": "automation", "description": "pendingUserActions item created" },
+    { "type": "verification.required", "category": "automation.execution", "level": "project", "actor": "automation", "description": "Human-in-the-loop blocked" },
+    { "type": "approval.requested", "category": "automation.execution", "level": "project", "actor": "automation", "description": "High-risk action needs approve" },
+
+    { "type": "review.started", "category": "automation.review", "level": "project", "actor": "automation", "description": "Weekly Review run began" },
+    { "type": "review.report_written", "category": "automation.review", "level": "project", "actor": "automation", "description": "ops/weekly report written", "payloadHints": ["weekId"] },
+    { "type": "review.plan_adjusted", "category": "automation.review", "level": "project", "actor": "automation", "description": "plan.json or phases adjusted", "payloadHints": ["changesSummary"] },
+    { "type": "review.completed", "category": "automation.review", "level": "project", "actor": "automation", "description": "Weekly Review finished" },
+
+    { "type": "notification.sent", "category": "system.notification", "level": "user|project", "actor": "system", "description": "Reminder or alert dispatched" },
+    { "type": "notification.opened", "category": "system.notification", "level": "user|project", "actor": "user", "description": "User clicked notification link" },
+    { "type": "notification.snoozed", "category": "system.notification", "level": "user|project", "actor": "user", "description": "User snoozed reminders" }
+  ],
+  "legacyAliases": {
+    "intake.analysis_completed": "analysis.completed",
+    "strategy.generated": "strategy.plan_created",
+    "phase.started": "execution.phase_started",
+    "phase.completed": "execution.phase_completed",
+    "task.completed": "execution.task_completed"
+  }
+}

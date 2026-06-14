@@ -24,6 +24,37 @@ _TBD_
 |------|----------|---------|--------------|
 | | | | |
 
+## Social accounts (this project)
+
+| Platform | Account | Status | Planned actions |
+|----------|---------|--------|-----------------|
+| Facebook | | planned / active / verification_required | |
+| Instagram | | | |
+| Twitter/X | | | |
+
+## Marketing actions enabled
+
+| Action | Channel | Frequency cap | Requires approval |
+|--------|---------|---------------|-------------------|
+| content.post | | | |
+| lead.search_groups | | | |
+| social.connect | | | |
+| social.dm | | | |
+
+## User reporting
+
+| Report | Channel | Contents |
+|--------|---------|----------|
+| Daily dashboard | UI | Actions today, leads, pending verification |
+| Daily summary | ops/daily/ | Account status + action list |
+| Weekly | ops/weekly/ | KPI vs target |
+
+## Human-in-the-loop pending
+
+| Item | Account | User must do | Due |
+|------|---------|--------------|-----|
+| | | | |
+
 ## KPIs
 
 | Metric | Baseline | Target | By date | Source |

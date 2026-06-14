@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "description": "Existing marketing channel types and how Automation discovers or asks the user during Intake",
+  "discoveryMethods": {
+    "passive_site_scan": "Crawl product.url / materials URLs without credentials",
+    "user_form": "User fills structured fields in Product UI",
+    "material_inference": "Infer from uploaded ads, screenshots, analytics exports",
+    "api_readonly": "Read-only API after user grants Vault credentials",
+    "manual_user_confirm": "Automation proposes finding; user confirms or corrects"
+  },
+  "channels": [
+    {
+      "channelId": "website_seo",
+      "label": "官网与 SEO",
+      "linkedMethodIds": ["website_seo"],
+      "discoveryMethods": ["passive_site_scan", "user_form", "api_readonly"],
+      "passiveSignals": ["title_meta", "h1_structure", "sitemap_xml", "robots_txt", "canonical", "schema_org", "hreflang", "page_speed_hints"],
+      "userFields": ["siteUrl", "cms", "searchConsoleAccess", "primaryKeywords"],
+      "credentialChannelId": "google_search_console",
+      "apiEnables": ["indexed_pages", "queries_clicks", "coverage_issues"]
+    },
+    {
+      "channelId": "google_analytics",
+      "label": "Google Analytics (GA4)",
+      "linkedMethodIds": ["website_seo", "content_marketing"],
+      "discoveryMethods": ["passive_site_scan", "user_form", "api_readonly"],
+      "passiveSignals": ["gtag_gtm_script", "measurement_id_in_page"],
+      "userFields": ["measurementId", "propertyId", "dataStreamUrl"],
+      "credentialChannelId": "google_analytics",
+      "apiEnables": ["sessions", "conversions", "traffic_sources", "landing_pages"]
+    },
+    {
+      "channelId": "google_tag_manager",
+      "label": "Google Tag Manager",
+      "discoveryMethods": ["passive_site_scan", "user_form"],
+      "passiveSignals": ["gtm_container_script"],
+      "userFields": ["containerId"]
+    },
+    {
+      "channelId": "meta_pixel",
+      "label": "Meta Pixel",
+      "linkedMethodIds": ["meta_ads", "retargeting"],
+      "discoveryMethods": ["passive_site_scan", "user_form", "api_readonly"],
+      "passiveSignals": ["fbq_script", "pixel_id_in_page"],
+      "userFields": ["pixelId", "domainVerified"],
+      "credentialChannelId": "meta",
+      "apiEnables": ["pixel_events", "ad_account_linkage"]
+    },
+    {
+      "channelId": "facebook_organic",
+      "label": "Facebook 主页（有机）",
+      "linkedMethodIds": ["social_organic"],
+      "discoveryMethods": ["user_form", "passive_site_scan", "material_inference", "api_readonly"],
+      "passiveSignals": ["facebook_link_in_footer", "og_site_name"],
+      "userFields": ["pageUrl", "pageId", "postingFrequency", "followerCountApprox"],
+      "credentialChannelId": "meta",
+      "apiEnables": ["recent_posts", "engagement", "page_insights"]
+    },
+    {
+      "channelId": "instagram_organic",
+      "label": "Instagram（有机）",
+      "linkedMethodIds": ["social_organic"],
+      "discoveryMethods": ["user_form", "passive_site_scan", "material_inference"],
+      "passiveSignals": ["instagram_link_in_site"],
+      "userFields": ["handle", "profileUrl", "linkedToFacebookPage"],
+      "credentialChannelId": "meta"
+    },
+    {
+      "channelId": "meta_ads",
+      "label": "Meta 广告（Facebook / Instagram Ads）",
+      "linkedMethodIds": ["meta_ads"],
+      "discoveryMethods": ["user_form", "api_readonly", "material_inference"],
+      "userFields": ["adAccountId", "activeCampaignSummary", "monthlySpendUsd", "objectives"],
+      "credentialChannelId": "meta",
+      "apiEnables": ["campaign_list", "spend", "roas", "creative_assets"]
+    },
+    {
+      "channelId": "google_ads",
+      "label": "Google Ads",
+      "linkedMethodIds": ["search_ads", "display_ads"],
+      "discoveryMethods": ["user_form", "api_readonly"],
+      "userFields": ["customerId", "activeCampaignSummary", "monthlySpendUsd"],
+      "credentialChannelId": "google_ads",
+      "apiEnables": ["campaign_list", "keywords", "spend", "conversions"]
+    },
+    {
+      "channelId": "email_marketing",
+      "label": "邮件营销",
+      "linkedMethodIds": ["email_drip", "newsletter"],
+      "discoveryMethods": ["user_form", "passive_site_scan", "material_inference"],
+      "passiveSignals": ["newsletter_signup_form", "mailchimp_klaviyo_script"],
+      "userFields": ["provider", "listSizeApprox", "sendFrequency"]
+    },
+    {
+      "channelId": "linkedin_organic",
+      "label": "LinkedIn 公司页 / 个人",
+      "linkedMethodIds": ["social_organic", "b2b_outbound"],
+      "discoveryMethods": ["user_form", "passive_site_scan"],
+      "passiveSignals": ["linkedin_link_in_site"],
+      "userFields": ["companyPageUrl", "personalProfileUrl"]
+    },
+    {
+      "channelId": "twitter_x",
+      "label": "X (Twitter)",
+      "linkedMethodIds": ["social_organic"],
+      "discoveryMethods": ["user_form", "passive_site_scan"],
+      "userFields": ["handle", "profileUrl"]
+    },
+    {
+      "channelId": "crm",
+      "label": "CRM / 线索库",
+      "linkedMethodIds": ["sales_enablement"],
+      "discoveryMethods": ["user_form"],
+      "userFields": ["provider", "pipelineStage", "monthlyLeadsApprox"]
+    }
+  ]
+}

@@ -9,6 +9,14 @@ node_modules/
 # Active intake may contain PII — use private repo or redact
 intake/active.json
 
+# Uploaded materials (binary)
+materials/**/original.*
+materials/**/*
+!materials/.gitkeep
+
+# Large analysis artifacts optional
+intake/analysis/material-notes/
+
 # Generated at runtime
 ops/state/agent-context.md
 
@@ -19,3 +27,9 @@ Thumbs.db
 # Campaign local session data
 campaigns/**/data/
 campaigns/**/.sessions/
+
+# Social account sessions (per project)
+accounts/**/session/
+
+# Action logs (optional commit; often large)
+ops/actions/*.jsonl

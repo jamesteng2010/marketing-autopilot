@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "description": "Default L2 metric sources per marketing methodId",
+  "methods": {
+    "website_seo": {
+      "sources": ["gsc", "ga4"],
+      "metrics": ["impressions", "clicks", "avg_position", "indexed_pages"]
+    },
+    "social_organic": {
+      "sources": ["platform_api", "actions"],
+      "metrics": ["posts_count", "engagement", "followers_delta"]
+    },
+    "search_ads": {
+      "sources": ["google_ads"],
+      "metrics": ["spend", "clicks", "conversions", "cpa"]
+    },
+    "social_ads_meta": {
+      "sources": ["meta_ads"],
+      "metrics": ["spend", "impressions", "ctr", "cpa"]
+    },
+    "email_marketing": {
+      "sources": ["esp"],
+      "metrics": ["list_size", "open_rate", "click_rate"]
+    },
+    "content_marketing": {
+      "sources": ["ga4", "gsc"],
+      "metrics": ["organic_sessions", "top_pages"]
+    },
+    "freemium_plg": {
+      "sources": ["product_db", "ga4"],
+      "metrics": ["signups", "activation_rate", "wau"]
+    }
+  },
+  "goalKpiDefaultSource": {
+    "signups": ["product_db", "ga4_event"],
+    "active_users": ["product_db"],
+    "waitlist": ["metrics_api", "manual"],
+    "traffic": ["ga4"],
+    "leads": ["crm", "manual"],
+    "revenue": ["stripe", "product_db"],
+    "paid_customers": ["stripe", "product_db"]
+  }
+}

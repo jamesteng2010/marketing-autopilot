@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "projectId": "prj_marketing_autopilot_launch",
+  "tasks": [
+    {
+      "id": "week1-waitlist",
+      "name": "Generate waitlist landing HTML",
+      "command": "node projects/marketing-autopilot-launch/campaigns/week1-waitlist/run.mjs",
+      "type": "generate",
+      "enabled": true,
+      "requiresDesktop": false,
+      "phase": "week_1",
+      "methodIds": ["freemium_plg"]
+    },
+    {
+      "id": "week1-og",
+      "name": "Generate architecture OG SVG",
+      "command": "node projects/marketing-autopilot-launch/campaigns/week1-og/run.mjs",
+      "type": "generate",
+      "enabled": true,
+      "requiresDesktop": false,
+      "phase": "week_1",
+      "methodIds": ["content_marketing"]
+    },
+    {
+      "id": "week1-content-en",
+      "name": "Generate EN launch thread",
+      "command": "node projects/marketing-autopilot-launch/campaigns/launch-content-en/run.mjs",
+      "type": "generate",
+      "enabled": true,
+      "requiresDesktop": false,
+      "phase": "week_1",
+      "methodIds": ["content_marketing", "social_organic"]
+    },
+    {
+      "id": "week1-content-cn",
+      "name": "Generate CN launch article",
+      "command": "node projects/marketing-autopilot-launch/campaigns/launch-content-cn/run.mjs",
+      "type": "generate",
+      "enabled": true,
+      "requiresDesktop": false,
+      "phase": "week_1",
+      "methodIds": ["content_marketing"]
+    },
+    {
+      "id": "week1-metrics",
+      "name": "Collect stars + write daily metrics",
+      "command": "node projects/marketing-autopilot-launch/campaigns/metrics-daily/run.mjs",
+      "type": "metrics",
+      "enabled": true,
+      "requiresDesktop": false,
+      "phase": "week_1",
+      "methodIds": ["metrics.collect"]
+    },
+    {
+      "id": "week1-readme-link",
+      "name": "Patch project README with automation links",
+      "command": "node projects/marketing-autopilot-launch/campaigns/week1-readme-link/run.mjs",
+      "type": "generate",
+      "enabled": true,
+      "requiresDesktop": false,
+      "phase": "week_1"
+    },
+    {
+      "id": "launch-content-pack",
+      "name": "Weekly content pack (week 2+)",
+      "command": "node projects/marketing-autopilot-launch/campaigns/launch-content-en/run.mjs",
+      "type": "content",
+      "enabled": false,
+      "requiresDesktop": false,
+      "phase": "week_2"
+    },
+    {
+      "id": "social-publish-en",
+      "name": "Publish to X/LinkedIn (needs credentials + worker)",
+      "command": "node projects/marketing-autopilot-launch/campaigns/launch-content-en/run.mjs --mode publish",
+      "type": "outreach",
+      "enabled": false,
+      "requiresDesktop": true,
+      "phase": "week_2",
+      "methodIds": ["social_organic"]
+    }
+  ]
+}

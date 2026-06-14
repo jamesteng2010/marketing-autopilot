@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "description": "Phase-based execution. Automation commander runs tasks per phase.",
+  "currentPhase": "week_1",
+  "phases": {
+    "week_1": {
+      "label": "Week 1 — 基建自动化",
+      "taskIds": [
+        "week1-waitlist",
+        "week1-og",
+        "week1-content-en",
+        "week1-content-cn",
+        "week1-metrics",
+        "week1-readme-link"
+      ],
+      "userInputsOptional": ["WAITLIST_FORM_URL", "WAITLIST_EMBED_HTML"],
+      "successCriteria": {
+        "artifactsExist": [
+          "campaigns/week1-waitlist/output/index.html",
+          "assets/og.svg",
+          "campaigns/launch-content-en/output/thread.md",
+          "campaigns/launch-content-cn/output/article.md",
+          "ops/state/metrics.json"
+        ]
+      },
+      "nextPhase": "week_2"
+    },
+    "week_2": {
+      "label": "Week 2 — 内容发布自动化",
+      "taskIds": ["launch-content-pack", "metrics-github"],
+      "successCriteria": {},
+      "nextPhase": "week_3"
+    }
+  }
+}

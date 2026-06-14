@@ -1,0 +1,33 @@
+{
+  "productSummary": "",
+  "valuePropositions": [],
+  "audienceHints": [],
+  "competitorsMentioned": [],
+  "brandTone": "",
+  "visualStyle": "",
+  "contentAssetsAvailable": {
+    "images": 0,
+    "videos": 0,
+    "audio": 0,
+    "documents": 0,
+    "hasLogo": false
+  },
+  "urlsCrawled": [],
+  "quotesFromMaterials": [],
+  "methodFeasibility": [],
+  "recommendedMethodIds": [],
+  "existingMarketingBaseline": {
+    "channelsActive": [],
+    "channelsDetectedOnly": [],
+    "channelsUserSaidNone": [],
+    "topGaps": [],
+    "recommendedIncrementalMethods": [],
+    "strategyPosture": {
+      "continue": [],
+      "fix": [],
+      "add": []
+    }
+  },
+  "confidence": "low",
+  "gaps": []
+}

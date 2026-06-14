@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marketing-autopilot.dev/schemas/intake/identity/v1",
+  "title": "Identity Gate fields",
+  "type": "object",
+  "properties": {
+    "hasCustomDomain": {
+      "type": ["boolean", "null"],
+      "description": "User owns or will purchase a custom domain for brand email and site"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Root domain e.g. example.com"
+    },
+    "brandEmailDesired": {
+      "type": "string",
+      "description": "Desired address e.g. hello@example.com"
+    },
+    "brandEmailStatus": {
+      "type": "string",
+      "enum": ["unknown", "pending_dns", "active", "skipped"],
+      "default": "unknown"
+    },
+    "contactEmail": {
+      "type": "string",
+      "description": "Public contact; defaults to user account email if empty"
+    },
+    "identityGateStatus": {
+      "type": "string",
+      "enum": ["pending", "in_progress", "passed", "blocked"],
+      "default": "pending"
+    },
+    "identityGatePassedAt": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "skipBrandEmailReason": {
+      "type": "string",
+      "description": "User chose skipped — e.g. use personal email for now"
+    }
+  },
+  "additionalProperties": false
+}

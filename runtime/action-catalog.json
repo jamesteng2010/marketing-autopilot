@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "description": "Channel actions + infrastructure identity setup. Human doc: docs/product/greenfield-identity-gate.md",
+  "channels": {
+    "infrastructure": {
+      "label": "Identity & infrastructure",
+      "actions": [
+        "infra.domain_dns",
+        "infra.email_setup",
+        "infra.measurement_connect",
+        "infra.cta_hosting"
+      ],
+      "requiresDesktop": false,
+      "humanVerificationCommon": ["dns_propagation", "domain_registrar", "oauth_consent"]
+    },
+    "facebook": {
+      "label": "Facebook",
+      "actions": ["account.create", "account.login", "account.warmup", "content.post", "lead.search_groups", "social.connect", "social.dm"],
+      "requiresDesktop": true,
+      "humanVerificationCommon": ["sms", "checkpoint", "photo_id"]
+    },
+    "instagram": {
+      "label": "Instagram",
+      "actions": ["account.create", "account.login", "account.warmup", "content.post", "lead.search_profiles", "social.follow", "social.dm"],
+      "requiresDesktop": true,
+      "humanVerificationCommon": ["sms", "email", "suspicious_login"]
+    },
+    "twitter": {
+      "label": "Twitter / X",
+      "actions": ["account.create", "account.login", "content.post", "lead.search_profiles", "social.follow", "social.dm"],
+      "requiresDesktop": true,
+      "humanVerificationCommon": ["phone", "captcha", "email"]
+    },
+    "telegram": {
+      "label": "Telegram",
+      "actions": ["account.login", "content.post", "lead.search_groups", "social.dm"],
+      "requiresDesktop": false,
+      "humanVerificationCommon": ["2fa", "new_device"]
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "actions": ["account.create", "account.login", "content.post", "lead.search_groups", "social.connect", "social.dm"],
+      "requiresDesktop": true,
+      "humanVerificationCommon": ["email", "captcha", "restrictions"]
+    }
+  },
+  "actionTypes": {
+    "account.create": { "label": "创建账户", "risk": "high", "defaultRequiresApproval": true },
+    "account.login": { "label": "登录并保存会话", "risk": "medium", "defaultRequiresApproval": false },
+    "account.warmup": { "label": "新号养号", "risk": "low", "defaultRequiresApproval": false },
+    "content.post": { "label": "发帖", "risk": "medium", "defaultRequiresApproval": false },
+    "content.schedule": { "label": "定时发帖", "risk": "low", "defaultRequiresApproval": false },
+    "lead.search_groups": { "label": "搜索目标群", "risk": "low", "defaultRequiresApproval": false },
+    "lead.search_profiles": { "label": "搜索潜在用户", "risk": "low", "defaultRequiresApproval": false },
+    "lead.comment": { "label": "评论引流", "risk": "medium", "defaultRequiresApproval": true },
+    "social.follow": { "label": "关注", "risk": "medium", "defaultRequiresApproval": false },
+    "social.connect": { "label": "加好友/连接", "risk": "high", "defaultRequiresApproval": true },
+    "social.dm": { "label": "私信", "risk": "high", "defaultRequiresApproval": true },
+    "metrics.collect": { "label": "采集指标", "risk": "low", "defaultRequiresApproval": false },
+    "infra.domain_dns": {
+      "label": "域名 DNS 配置",
+      "risk": "medium",
+      "defaultRequiresApproval": false,
+      "phaseHint": "identity_gate",
+      "notes": "Generate SPF/DKIM/verification records; optional registrar API; not bulk email creation"
+    },
+    "infra.email_setup": {
+      "label": "品牌邮箱（SES/Resend/Workspace）",
+      "risk": "medium",
+      "defaultRequiresApproval": false,
+      "phaseHint": "identity_gate",
+      "notes": "Requires identity.domain or user skip with contactEmail"
+    },
+    "infra.measurement_connect": {
+      "label": "连接 GA4/GSC 测量",
+      "risk": "low",
+      "defaultRequiresApproval": false,
+      "phaseHint": "identity_gate",
+      "notes": "OAuth or service account; prerequisite for establish-baseline"
+    },
+    "infra.cta_hosting": {
+      "label": "落地页/Waitlist 托管",
+      "risk": "low",
+      "defaultRequiresApproval": false,
+      "phaseHint": "foundation",
+      "notes": "Deploy or publish deploy-notes; may block on WAITLIST_FORM_URL"
+    }
+  }
+}

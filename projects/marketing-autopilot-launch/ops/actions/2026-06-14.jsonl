@@ -1,0 +1,6 @@
+{"ts":"2026-06-14T09:28:32.824Z","taskId":"week1-waitlist","action":"content.generate","status":"success","summary":"Waitlist landing HTML generated","artifact":"campaigns/week1-waitlist/output/index.html"}
+{"ts":"2026-06-14T09:28:32.870Z","taskId":"week1-og","action":"content.generate","status":"success","summary":"OG SVG generated","artifact":"assets/og.svg"}
+{"ts":"2026-06-14T09:28:32.913Z","taskId":"week1-content-en","action":"content.generate","status":"success","summary":"EN thread draft","artifact":"campaigns/launch-content-en/output/thread.md"}
+{"ts":"2026-06-14T09:28:32.963Z","taskId":"week1-content-cn","action":"content.generate","status":"success","summary":"CN article draft","artifact":"campaigns/launch-content-cn/output/article.md"}
+{"ts":"2026-06-14T09:28:33.561Z","taskId":"week1-metrics","action":"metrics.collect","status":"success","summary":"stars=0","metrics":{"lastRunAt":"2026-06-14T09:28:33.560Z","github_stars":0,"waitlist_count":0,"repo":"jamesteng2010/marketing-autopilot"}}
+{"ts":"2026-06-14T09:28:33.650Z","taskId":"week1-readme-link","action":"content.patch","status":"success","summary":"README automation block updated"}

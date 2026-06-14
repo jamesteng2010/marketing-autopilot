@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+/** Generate OG / architecture SVG (no manual Figma for v1). */
+import { readProjectJson, writeText, setTaskStatus, logAction, ensureDir } from '../../../../runtime/campaign-lib/helpers.mjs';
+
+const TASK = 'week1-og';
+
+function main() {
+  setTaskStatus(TASK, 'running', 'Generating architecture OG SVG');
+  const intake = readProjectJson('intake/active.json');
+  const name = intake?.product?.name || 'Marketing Autopilot';
+
+  const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e3a5f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="60" y="100" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="28">Open beta · Project #1 dogfood</text>
+  <text x="60" y="180" fill="#f8fafc" font-family="system-ui,sans-serif" font-size="56" font-weight="700">${name}</text>
+  <text x="60" y="250" fill="#cbd5e1" font-family="system-ui,sans-serif" font-size="32">UI intake → feasibility by country → Automation executes</text>
+  <rect x="60" y="320" width="320" height="80" rx="12" fill="#334155"/>
+  <text x="80" y="370" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="22">1. Intake + materials</text>
+  <rect x="420" y="320" width="320" height="80" rx="12" fill="#334155"/>
+  <text x="440" y="370" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="22">2. Feasibility report</text>
+  <rect x="780" y="320" width="320" height="80" rx="12" fill="#334155"/>
+  <text x="800" y="370" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="22">3. Run campaigns</text>
+  <path d="M380 360 H420 M740 360 H780" stroke="#64748b" stroke-width="4"/>
+  <text x="60" y="480" fill="#64748b" font-family="system-ui,sans-serif" font-size="24">User: provide info · watch progress · Automation: plan · code · run</text>
+  <text x="60" y="560" fill="#475569" font-family="system-ui,sans-serif" font-size="20">github.com/jamesteng2010/marketing-autopilot</text>
+</svg>`;
+
+  ensureDir('assets');
+  writeText('assets/og.svg', svg);
+  writeText('assets/og-readme-snippet.md', `<!-- Automation-generated OG -->
+![${name} architecture](./assets/og.svg)
+`);
+
+  logAction({ taskId: TASK, action: 'content.generate', status: 'success', summary: 'OG SVG generated', artifact: 'assets/og.svg' });
+  setTaskStatus(TASK, 'done', 'OG at assets/og.svg');
+  console.log(JSON.stringify({ ok: true, artifact: 'assets/og.svg' }));
+}
+
+main();

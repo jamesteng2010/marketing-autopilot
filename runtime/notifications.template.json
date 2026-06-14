@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "channels": {
+    "in_app": { "enabled": true },
+    "email": { "enabled": true, "addressFromProfile": true },
+    "web_push": { "enabled": false },
+    "telegram": { "enabled": false, "chatIdSecretRef": null },
+    "slack": { "enabled": false, "webhookSecretRef": null },
+    "sms": { "enabled": false, "phoneSecretRef": null }
+  },
+  "reminderPolicy": {
+    "enabled": true,
+    "scheduleHoursAfterOpen": [0, 24, 48, 72],
+    "repeatEveryHoursAfterLast": 168,
+    "maxRemindersPerItem": 12,
+    "quietHoursUtc": { "start": 22, "end": 8 },
+    "snoozeOptionsHours": [24, 72, 168]
+  },
+  "triggers": {
+    "intake_incomplete": { "enabled": true, "minFieldsMissing": 1 },
+    "feasibility_unconfirmed": { "enabled": true, "hoursAfterAnalysis": 24 },
+    "pending_user_actions": { "enabled": true },
+    "pending_human": { "enabled": true },
+    "credential_missing": { "enabled": true },
+    "approval_required": { "enabled": true },
+    "verification_required": { "enabled": true, "urgency": "high" }
+  },
+  "templates": {
+    "defaultLocale": "en",
+    "supportedLocales": ["en", "zh-CN"]
+  }
+}

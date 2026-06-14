@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "currentPhase": "week_1",
+  "phaseProgress": 1,
+  "phaseLabel": "Week 1 — 基建自动化",
+  "tasks": [
+    {
+      "id": "week1-waitlist",
+      "status": "done",
+      "summary": "Landing at campaigns/week1-waitlist/output/index.html",
+      "updatedAt": "2026-06-14T09:28:32.824Z"
+    },
+    {
+      "id": "week1-og",
+      "status": "done",
+      "summary": "OG at assets/og.svg",
+      "updatedAt": "2026-06-14T09:28:32.870Z"
+    },
+    {
+      "id": "week1-content-en",
+      "status": "done",
+      "summary": "EN thread at campaigns/launch-content-en/output/thread.md",
+      "updatedAt": "2026-06-14T09:28:32.913Z"
+    },
+    {
+      "id": "week1-content-cn",
+      "status": "done",
+      "summary": "CN article at campaigns/launch-content-cn/output/article.md",
+      "updatedAt": "2026-06-14T09:28:32.964Z"
+    },
+    {
+      "id": "week1-metrics",
+      "status": "done",
+      "summary": "stars=0 waitlist=0",
+      "updatedAt": "2026-06-14T09:28:33.561Z"
+    },
+    {
+      "id": "week1-readme-link",
+      "status": "done",
+      "summary": "README links block updated",
+      "updatedAt": "2026-06-14T09:28:33.650Z"
+    }
+  ],
+  "pendingUserActions": [],
+  "metrics": {
+    "lastRunAt": "2026-06-14T09:28:33.560Z",
+    "github_stars": 0,
+    "waitlist_count": 0,
+    "repo": "jamesteng2010/marketing-autopilot"
+  },
+  "userRole": "Provide info and watch progress — Automation commands execution"
+}

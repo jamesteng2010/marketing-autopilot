@@ -1,6 +1,16 @@
 {
   "version": 1,
   "updatedAt": null,
+  "identity": {
+    "hasCustomDomain": null,
+    "domain": "",
+    "brandEmailDesired": "",
+    "brandEmailStatus": "unknown",
+    "contactEmail": "",
+    "identityGateStatus": "pending",
+    "identityGatePassedAt": null,
+    "skipBrandEmailReason": ""
+  },
   "product": {
     "name": "",
     "url": "",
@@ -11,6 +21,7 @@
   "audience": {
     "primary": "",
     "geography": [],
+    "geographyRegions": [],
     "languages": ["en"],
     "painPoints": []
   },
@@ -18,19 +29,122 @@
     "primaryKpi": "signups",
     "targetValue": 0,
     "deadline": "",
-    "secondary": []
+    "primaryLabel": "",
+    "secondary": [],
+    "measurement": {
+      "primary": {
+        "source": "ga4_event",
+        "eventName": "",
+        "propertyId": "",
+        "dbMappingId": "",
+        "apiPath": ""
+      },
+      "baseline": {
+        "value": null,
+        "asOf": null,
+        "status": "unknown"
+      },
+      "notes": ""
+    },
+    "budgetCeilingUsd": null,
+    "riskAcknowledged": false,
+    "userConfirmedGoals": false,
+    "confirmedAt": null,
+    "confirmedSummary": ""
+  },
+  "productData": {
+    "hasProductDatabase": null,
+    "connectionType": "none",
+    "metricsApiBaseUrl": "",
+    "schemaSummaryUri": "",
+    "privacy": {
+      "noPiiExport": true,
+      "allowedAggregations": ["count", "group_by_date"]
+    },
+    "kpiMappings": [],
+    "connectionStatus": "not_configured",
+    "lastCollectedAt": null
   },
   "marketing": {
     "channelsPreferred": [],
+    "methodsPreferred": [],
+    "methodsAvoid": [],
     "channelsAvoid": [],
     "budgetMonthlyUsd": 0,
     "brandTone": "professional",
-    "complianceNotes": ""
+    "complianceNotes": "",
+    "accountStrategy": {
+      "useExistingAccounts": false,
+      "allowAutoCreateAccounts": false,
+      "platformsToCreate": [],
+      "platformsExisting": {}
+    },
+    "actionsApproved": {
+      "accountCreate": false,
+      "coldDm": false,
+      "massConnect": false
+    }
   },
   "assets": {
     "analyticsId": "",
     "existingSocial": {},
     "crm": "none"
+  },
+  "existingMarketing": {
+    "hasActiveMarketing": null,
+    "userSummary": "",
+    "channelsUserDeclared": [],
+    "analytics": {
+      "ga4": {
+        "measurementId": "",
+        "propertyId": "",
+        "hasUserProvidedAccess": false,
+        "discoverySource": "unknown"
+      },
+      "gtm": { "containerId": "" },
+      "metaPixel": { "pixelId": "", "discoverySource": "unknown" },
+      "plausibleOrOther": { "provider": "", "siteId": "" }
+    },
+    "organicSocial": {
+      "facebook": { "pageUrl": "", "pageId": "", "status": "unknown" },
+      "instagram": { "handle": "", "profileUrl": "" },
+      "linkedin": { "companyPageUrl": "" },
+      "twitter": { "handle": "" }
+    },
+    "paidAds": {
+      "meta": {
+        "adAccountId": "",
+        "monthlySpendUsd": null,
+        "activeCampaignSummary": ""
+      },
+      "googleAds": {
+        "customerId": "",
+        "monthlySpendUsd": null,
+        "activeCampaignSummary": ""
+      }
+    },
+    "seo": {
+      "primarySiteUrl": "",
+      "cms": "",
+      "searchConsoleVerified": false,
+      "targetKeywords": []
+    },
+    "emailMarketing": {
+      "provider": "",
+      "listSizeApprox": null
+    },
+    "discovery": {
+      "status": "pending",
+      "lastRunAt": null,
+      "confidence": "low",
+      "blockedReason": null
+    },
+    "assetsNeededFromUser": []
+  },
+  "materials": {
+    "items": [],
+    "analysisCompletedAt": null,
+    "userConfirmedAnalysis": false
   },
   "runtime": {
     "preferred": "cloud",

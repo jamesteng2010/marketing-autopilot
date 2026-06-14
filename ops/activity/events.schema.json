@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "description": "Append-only project activity: user actions + all Automation work. One JSON object per line.",
+  "example": {
+    "id": "evt_01HXXX",
+    "ts": "2026-06-14T10:00:00.000Z",
+    "type": "account.created",
+    "category": "automation.marketing",
+    "level": "project",
+    "userId": "usr_abc",
+    "projectId": "prj_xyz",
+    "actor": "automation",
+    "actorId": "campaign/week1-social",
+    "source": "campaign",
+    "summary": "Registered Facebook Page for this project",
+    "payload": {
+      "channel": "facebook",
+      "accountId": "fb_001"
+    },
+    "correlationId": "run_phase_week_1"
+  },
+  "requiredFields": ["id", "ts", "type", "actor", "summary"]
+}

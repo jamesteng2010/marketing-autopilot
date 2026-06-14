@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "projectMeta": {
+    "projectId": "prj_marketing_autopilot_launch",
+    "projectName": "Marketing Autopilot 公测获客",
+    "ownerUserId": "usr_founder_001",
+    "ownerNote": "第一个用户（创始人）的第一个项目 — 为 Marketing Autopilot 本身做市场宣传",
+    "createdAt": "2026-06-14T00:00:00Z"
+  },
+  "updatedAt": "2026-06-14T12:00:00Z",
+  "product": {
+    "name": "Marketing Autopilot",
+    "url": "https://github.com/jamesteng2010/marketing-autopilot",
+    "oneLiner": "上传资料、选国家，AI 生成可执行的营销计划并自动跑社媒获客",
+    "description": "面向独立开发者与小团队的营销自动化 SaaS。用户通过 UI 填写需求并上传文本/网站/图片/音视频；系统分析可行性，按国家推荐渠道，生成策略与脚本，由 Cursor Automations 执行发帖、找群、私信等动作，并汇报进展。支持多项目隔离、人工验证通知。底层开源框架 + 即将推出的 Product UI。",
+    "pricingModel": "freemium"
+  },
+  "audience": {
+    "primary": "独立开发者、Indie hacker、2–10 人小团队创始人；已使用或考虑使用 Cursor / AI 编程工具",
+    "geography": ["CN", "US", "SG", "GLOBAL"],
+    "geographyRegions": ["CN", "US", "GLOBAL_EN", "SEA"],
+    "languages": ["zh-CN", "en"],
+    "painPoints": [
+      "有产品但不会做市场，只会写代码",
+      "请 agency 太贵，自己发帖没策略",
+      "多国市场不知道怎么选渠道",
+      "想要自动化但怕封号、怕合规",
+      "Marketing 与 engineering 工具割裂"
+    ]
+  },
+  "goals": {
+    "primaryKpi": "waitlist_signups",
+    "targetValue": 200,
+    "deadline": "2026-09-14",
+    "secondary": [
+      { "kpi": "github_stars", "target": 150, "deadline": "2026-09-14" },
+      { "kpi": "beta_active_projects", "target": 30, "deadline": "2026-09-14" },
+      { "kpi": "content_pieces_published", "target": 40, "deadline": "2026-09-14" }
+    ]
+  },
+  "marketing": {
+    "channelsPreferred": ["twitter", "linkedin", "telegram", "github", "product_hunt"],
+    "methodsPreferred": [
+      "content_marketing",
+      "social_organic",
+      "product_launch_platforms",
+      "community_outreach",
+      "owned_community",
+      "freemium_plg"
+    ],
+    "methodsAvoid": ["offline_ads", "cold_email"],
+    "channelsAvoid": [],
+    "budgetMonthlyUsd": 200,
+    "brandTone": "professional",
+    "complianceNotes": "不承诺违规涨粉；Automation 演示需标注 beta；中国区内容需合规表述，不用绝对化用语",
+    "accountStrategy": {
+      "useExistingAccounts": true,
+      "allowAutoCreateAccounts": false,
+      "platformsToCreate": [],
+      "platformsExisting": {
+        "twitter": "@founder_handle",
+        "linkedin": "founder profile",
+        "telegram": "optional channel",
+        "github": "jamesteng2010"
+      }
+    },
+    "actionsApproved": {
+      "accountCreate": false,
+      "coldDm": false,
+      "massConnect": false
+    }
+  },
+  "assets": {
+    "analyticsId": "",
+    "existingSocial": {
+      "github": "jamesteng2010/marketing-autopilot"
+    },
+    "crm": "spreadsheet"
+  },
+  "materials": {
+    "items": [
+      {
+        "id": "mat_001",
+        "type": "url",
+        "title": "GitHub 仓库与 README",
+        "source": "url",
+        "uri": "https://github.com/jamesteng2010/marketing-autopilot",
+        "mimeType": "text/html",
+        "uploadedAt": "2026-06-14T10:00:00Z",
+        "analysisStatus": "done",
+        "analysisSummary": "开源框架；Product UI v0.2 规划中；Cursor Automations 集成"
+      },
+      {
+        "id": "mat_002",
+        "type": "url",
+        "title": "产品 PRD",
+        "source": "url",
+        "uri": "https://github.com/jamesteng2010/marketing-autopilot/blob/main/docs/product/PRD.md",
+        "mimeType": "text/html",
+        "uploadedAt": "2026-06-14T10:05:00Z",
+        "analysisStatus": "done",
+        "analysisSummary": "SaaS 定位；多项目隔离；intake+feasibility+execution 闭环"
+      },
+      {
+        "id": "mat_003",
+        "type": "text",
+        "title": "核心价值主张（中文）",
+        "source": "paste",
+        "uri": "materials/mat_003/content.md",
+        "mimeType": "text/plain",
+        "uploadedAt": "2026-06-14T10:10:00Z",
+        "analysisStatus": "done",
+        "analysisSummary": "不用 clone 仓库；按国家给策略；人机协同验证"
+      }
+    ],
+    "analysisCompletedAt": "2026-06-14T11:30:00Z",
+    "userConfirmedAnalysis": true
+  },
+  "runtime": {
+    "preferred": "hybrid",
+    "region": "ap-southeast-1"
+  },
+  "credentialsRequested": ["openai", "smtp"],
+  "credentialsProvided": []
+}

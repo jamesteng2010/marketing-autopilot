@@ -1,0 +1,31 @@
+{
+  "$schema": "marketing-autopilot/intake-materials/v1",
+  "description": "Schema for materials.items[] in intake/active.json",
+  "itemFields": {
+    "id": "required, e.g. mat_001",
+    "type": "text | url | image | video | audio | document | spreadsheet",
+    "title": "user-visible label",
+    "source": "upload | url | paste",
+    "uri": "https://... or materials/{id}/original.ext",
+    "mimeType": "optional",
+    "uploadedAt": "ISO 8601",
+    "analysisStatus": "pending | processing | done | failed",
+    "analysisSummary": "one-line after analysis, or null",
+    "analysisError": "optional if failed"
+  },
+  "limits": {
+    "maxItemsPerProject": 50,
+    "maxFileSizeMb": {
+      "image": 10,
+      "audio": 25,
+      "video": 50,
+      "document": 20
+    }
+  },
+  "acceptedMimeTypes": {
+    "image": ["image/jpeg", "image/png", "image/webp", "image/gif"],
+    "audio": ["audio/mpeg", "audio/wav", "audio/mp4"],
+    "video": ["video/mp4", "video/webm"],
+    "document": ["application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]
+  }
+}

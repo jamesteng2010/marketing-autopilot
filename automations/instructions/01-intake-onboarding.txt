@@ -6,23 +6,26 @@
 
 1. 若 `intake/active.json` 不存在，从 `intake/template.json` 复制并初始化。
 
-2. 向用户逐项确认（缺什么问什么，不要一次抛 20 个问题）：
-   - 产品：名称、URL、一句话介绍、详细描述、定价模式
-   - 受众：谁会用、地区、语言、痛点
-   - 目标：主 KPI、目标数值、截止日期、次要目标
-   - 营销：希望用的渠道、避免的渠道、月预算、品牌语气、合规限制
-   - 资产：GA4 ID、已有社交账号、CRM
-   - 运行环境偏好：cloud / ec2 / local / hybrid
+2. 引导用户：
+   - 分步表单字段（产品、受众、目标、渠道…）
+   - **现有营销现状**（必问）：
+     - 是否已在进行营销活动？
+     - 正在做哪些：官网 SEO、GA4、Facebook 主页/广告、Google Ads、邮件、LinkedIn 等
+     - 每渠道：进行中 / 暂停 / 没有；能提供的主页 URL、GA Measurement ID、广告账户 ID 等
+   - **资料上传**：文本、网站 URL、图片、音频、视频、PDF（含广告截图、Analytics 报表更佳）
 
-3. 每轮更新 `intake/active.json`，设置 `updatedAt` 为 ISO 时间。
+3. 资料入库 materials.items[]；existingMarketing 写入 active.json；大文件只存 uri。
 
-4. 运行 `npm run marketing:validate`，把缺失字段告诉用户。
+4. 表单 + 至少一种资料（或 product.url）就绪后，提示用户触发 **Intake Analysis**（Automation 05）：
+   - 会 **自动扫描官网** 发现 GA/Pixel/SEO/社交链接
+   - 合并用户填写，列出还缺的信息
 
-5. 当 validate 通过时，输出 Markdown 摘要：
-   - 我们理解的产品与目标
-   - 建议的下一步（触发 Strategy Planner automation）
-   - 可能需要的凭证类型（仅列名称，来自 schema.json）
+5. 每轮更新 intake/active.json 的 updatedAt。
 
-6. 若有 git 权限：`git add intake/active.json && git commit -m "intake: onboarding complete"`
+6. 可行性报告生成后，告知用户查看 feasibility **现有营销基线** 并确认后再做完整策略。
 
-禁止：编造用户未提供的数字；写入任何 secret 值到 git。
+7. 运行 npm run marketing:validate，报告缺失字段。
+
+禁止：在用户未确认 feasibility 前生成 campaigns；跨项目读写。
+
+参考：docs/product/existing-marketing-discovery.md

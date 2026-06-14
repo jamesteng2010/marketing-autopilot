@@ -1,0 +1,19 @@
+[
+  {
+    "id": "ph_example",
+    "type": "user_input",
+    "status": "open",
+    "title": "Provide waitlist form URL",
+    "reason": "Required to embed signup CTA in generated landing page",
+    "field": "WAITLIST_FORM_URL",
+    "projectId": null,
+    "createdAt": null,
+    "resolvedAt": null,
+    "notification": {
+      "remindCount": 0,
+      "lastRemindedAt": null,
+      "nextRemindAt": null,
+      "snoozedUntil": null
+    }
+  }
+]

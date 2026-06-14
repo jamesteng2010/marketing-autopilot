@@ -1,0 +1,78 @@
+{
+  "$schema": "internal/marketing-autopilot-existing-marketing/v1",
+  "description": "User-declared and Automation-discovered current marketing activities for a project",
+  "fields": {
+    "hasActiveMarketing": {
+      "type": "boolean|null",
+      "description": "User answer: already running marketing? null = not asked yet"
+    },
+    "userSummary": {
+      "type": "string",
+      "description": "Free-text: what marketing they believe they are doing today"
+    },
+    "channelsUserDeclared": {
+      "type": "array",
+      "items": {
+        "channelId": "string from runtime/existing-marketing-channels-catalog.json",
+        "status": "active|paused|planning|none|unknown",
+        "notes": "string",
+        "userProvided": "object — channel-specific fields from catalog.userFields"
+      }
+    },
+    "analytics": {
+      "ga4": {
+        "measurementId": "string e.g. G-XXXX",
+        "propertyId": "string",
+        "hasUserProvidedAccess": "boolean",
+        "discoverySource": "user_form|passive_site_scan|api_readonly|unknown"
+      },
+      "gtm": { "containerId": "string" },
+      "metaPixel": { "pixelId": "string", "discoverySource": "string" },
+      "plausibleOrOther": { "provider": "string", "siteId": "string" }
+    },
+    "organicSocial": {
+      "facebook": { "pageUrl": "string", "pageId": "string", "status": "string" },
+      "instagram": { "handle": "string", "profileUrl": "string" },
+      "linkedin": { "companyPageUrl": "string" },
+      "twitter": { "handle": "string" }
+    },
+    "paidAds": {
+      "meta": {
+        "adAccountId": "string",
+        "monthlySpendUsd": "number|null",
+        "activeCampaignSummary": "string"
+      },
+      "googleAds": {
+        "customerId": "string",
+        "monthlySpendUsd": "number|null",
+        "activeCampaignSummary": "string"
+      }
+    },
+    "seo": {
+      "primarySiteUrl": "string",
+      "cms": "string",
+      "searchConsoleVerified": "boolean",
+      "targetKeywords": "string[]"
+    },
+    "emailMarketing": {
+      "provider": "string",
+      "listSizeApprox": "number|null"
+    },
+    "discovery": {
+      "status": "pending|partial|done|blocked_needs_credentials",
+      "lastRunAt": "ISO8601|null",
+      "confidence": "low|medium|high",
+      "blockedReason": "string|null"
+    },
+    "assetsNeededFromUser": {
+      "type": "array",
+      "items": {
+        "channelId": "string",
+        "field": "string",
+        "reason": "string",
+        "priority": "required|recommended|optional"
+      }
+    }
+  },
+  "analysisOutputPath": "intake/analysis/existing-marketing.json"
+}

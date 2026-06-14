@@ -1,0 +1,26 @@
+{
+  "$schema": "internal/marketing-autopilot-goals/v1",
+  "fields": {
+    "primaryKpi": "signups|active_users|waitlist|traffic|leads|revenue|paid_customers|brand_awareness",
+    "targetValue": "number",
+    "deadline": "ISO8601 date",
+    "primaryLabel": "string optional",
+    "secondary": "array of { kpi, targetValue, deadline }",
+    "measurement": {
+      "primary": {
+        "source": "ga4_event|gsc|product_db|metrics_api|stripe|manual",
+        "eventName": "string if ga4",
+        "propertyId": "string",
+        "dbMappingId": "string if product_db",
+        "apiPath": "string if metrics_api"
+      },
+      "baseline": { "value": "number|null", "asOf": "ISO8601|null", "status": "unknown|estimated|measured" },
+      "notes": "string e.g. activation definition"
+    },
+    "budgetCeilingUsd": "number optional",
+    "riskAcknowledged": "boolean",
+    "userConfirmedGoals": "boolean — must true before Planner execution",
+    "confirmedAt": "ISO8601|null",
+    "confirmedSummary": "string"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "accounts": [],
+  "rules": [
+    "Each account belongs to this projectId only",
+    "session paths are gitignored",
+    "status: planned | creating | verification_required | active | paused | restricted | archived"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "projectId": "prj_marketing_autopilot_launch",
+  "priorities": [
+    "content_marketing",
+    "social_organic",
+    "product_launch_platforms",
+    "community_outreach",
+    "freemium_plg"
+  ],
+  "deprioritize": [
+    "search_ads",
+    "social_dm",
+    "cold_email"
+  ],
+  "phase": "week_1_foundation",
+  "notes": "Dogfood project #1. No cold DM. PH target week 7."
+}

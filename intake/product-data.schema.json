@@ -1,0 +1,27 @@
+{
+  "$schema": "internal/marketing-autopilot-product-data/v1",
+  "fields": {
+    "hasProductDatabase": "boolean|null",
+    "connectionType": "postgres|mysql|supabase|mongodb_readonly|metrics_api|none",
+    "metricsApiBaseUrl": "string",
+    "schemaSummaryUri": "material id or uri",
+    "privacy": {
+      "noPiiExport": "boolean default true",
+      "allowedAggregations": "array of strings"
+    },
+    "kpiMappings": {
+      "type": "array",
+      "items": {
+        "id": "string",
+        "label": "string",
+        "goalKpi": "matches goals.primaryKpi enum",
+        "type": "sql_aggregate|api_endpoint",
+        "definition": "SQL or path",
+        "parameters": "array",
+        "notes": "string"
+      }
+    },
+    "connectionStatus": "not_configured|pending_credentials|connected|error",
+    "lastCollectedAt": "ISO8601|null"
+  }
+}
