@@ -18,11 +18,15 @@ Existing marketing audit: [product/existing-marketing-discovery.md](./product/ex
 
 | Field | Description |
 |-------|-------------|
-| `audience.primary` | Who buys or signs up first |
+| `audience.primary` | **ICP** — Ideal Customer Profile: who buys or signs up first (one plain sentence). **Auto-suggested** on website import or via **Suggest from product info**; user always edits in UI. |
+| `audience.primarySource` | Optional: `website_inferred` \| `product_inferred` \| `ai_suggested` |
+| `audience.primaryInference` | Optional: `{ method, confidence, suggestedAt }` from `infer-audience` |
 | `audience.geography` | ISO 国家码列表，如 `["US","CN"]` |
 | `audience.geographyRegions` | 区域画像 key，见 `runtime/regions-catalog.json`：US, CN, EU, SEA, JP, MENA, LATAM, GLOBAL_EN |
 | `audience.languages` | e.g. `["en", "zh-CN"]` |
-| `audience.painPoints` | Problems your product solves |
+| `audience.painPoints` | Problems your product solves; may be auto-suggested with ICP |
+
+**API:** `POST /api/projects/:id/intake/import-website` · `POST /api/projects/:id/intake/suggest-audience`
 
 ## Goals（初填 + Goal Workshop 确认）
 
@@ -59,11 +63,12 @@ Credentials: Vault `product_db_readonly` / `metrics_api_readonly` — never git.
 | `marketing.methodsPreferred` | Method IDs from `runtime/marketing-methods-catalog.json` |
 | `marketing.methodsAvoid` | Methods to exclude |
 | `marketing.channelsAvoid` | Channels to skip |
-| `marketing.budgetMonthlyUsd` | 0 for organic-only |
-| `marketing.brandTone` | professional / friendly / bold / … |
-| `marketing.complianceNotes` | GDPR, industry rules, no cold call, etc. |
-| `marketing.accountStrategy` | Auto-create vs existing social accounts |
-| `marketing.actionsApproved` | High-risk actions user pre-approved |
+| `marketing.budgetMonthlyUsd` | 0 for organic-only（Goals / 计费页，非 Intake UI） |
+| `marketing.brandTone` | professional / friendly / … — **不在 Intake UI 展示**；默认来自 [automation-policy.md](./product/automation-policy.md) |
+| `marketing.complianceNotes` | **不在 Intake UI 展示**；平台管理员在 `runtime/automation-policy.json` 配置；分析时注入项目 |
+| `marketing.complianceSource` | `platform_policy` when injected from platform policy |
+| `marketing.accountStrategy` | Auto-create vs existing social accounts（Intake Step 3 checkbox） |
+| `marketing.actionsApproved` | High-risk actions user pre-approved（Strategy 批准门） |
 
 ## Assets (metadata)
 

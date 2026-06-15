@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marketing Autopilot — Sign in</title>
+  <link rel="stylesheet" href="/auth.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <h1>Marketing Autopilot</h1>
+      <p>AI-driven marketing for your product</p>
+    </div>
+
+    <div class="card">
+      <!-- Sign in / Register -->
+      <div id="panel-auth" class="panel active">
+        <div class="tabs" id="tabs">
+          <button type="button" id="tab-login" class="active">Sign in</button>
+          <button type="button" id="tab-register">Create account</button>
+        </div>
+        <form id="form-auth">
+          <div id="name-field" class="hidden">
+            <label for="displayName">Display name (optional)</label>
+            <input id="displayName" name="displayName" autocomplete="name" />
+          </div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email" />
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" required minlength="8" autocomplete="current-password" />
+          <div class="forgot-row hidden" id="forgot-row">
+            <button type="button" class="link" id="goto-forgot">Forgot password?</button>
+          </div>
+          <button type="submit" class="primary" id="submit-auth">Sign in</button>
+          <div id="msg-auth" class="msg"></div>
+        </form>
+      </div>
+
+      <!-- Check email (after register / resend) -->
+      <div id="panel-check-email" class="panel">
+        <div class="center-text">
+          <div class="icon-circle">✉</div>
+          <h2>Check your email</h2>
+          <p id="check-email-text">We sent a verification link. Click it to activate your account, then sign in.</p>
+          <button type="button" class="primary" id="goto-signin-from-check">Back to sign in</button>
+          <p class="helper" style="margin-top:16px">
+            Didn't get it?
+            <button type="button" class="link" id="resend-verification">Resend verification email</button>
+          </p>
+          <div id="msg-check" class="msg"></div>
+        </div>
+      </div>
+
+      <!-- Forgot password -->
+      <div id="panel-forgot" class="panel">
+        <div class="center-text">
+          <h2>Reset your password</h2>
+          <p>Enter your email and we'll send reset instructions if an account exists.</p>
+        </div>
+        <form id="form-forgot">
+          <label for="forgot-email">Email</label>
+          <input id="forgot-email" type="email" required autocomplete="email" />
+          <button type="submit" class="primary">Send reset link</button>
+          <div id="msg-forgot" class="msg"></div>
+        </form>
+        <p class="helper"><button type="button" class="link" id="back-from-forgot">Back to sign in</button></p>
+      </div>
+
+      <!-- Reset password (from email link) -->
+      <div id="panel-reset" class="panel">
+        <div class="center-text">
+          <h2>Choose a new password</h2>
+          <p>Must be at least 8 characters.</p>
+        </div>
+        <form id="form-reset">
+          <label for="new-password">New password</label>
+          <input id="new-password" type="password" required minlength="8" autocomplete="new-password" />
+          <label for="confirm-password">Confirm password</label>
+          <input id="confirm-password" type="password" required minlength="8" autocomplete="new-password" />
+          <button type="submit" class="primary">Update password</button>
+          <div id="msg-reset" class="msg"></div>
+        </form>
+      </div>
+
+      <!-- Verified success -->
+      <div id="panel-verified" class="panel">
+        <div class="center-text">
+          <div class="icon-circle">✓</div>
+          <h2>Email verified</h2>
+          <p id="verified-text">Your account is active. You can sign in now.</p>
+          <button type="button" class="primary" id="goto-signin-verified">Sign in</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="helper" style="margin-top:20px">Dev: api.myreceipt.website</p>
+  </div>
+
+  <script src="/auth.js"></script>
+</body>
+</html>

@@ -1,12 +1,16 @@
 {
-  "name": "Marketing Autopilot — Intake Analysis",
-  "description": "Analyze uploaded materials (text, URL, image, video, audio) and produce feasibility marketing report for user review",
+  "name": "Marketing Autopilot — Intake Analysis (05)",
+  "description": "Webhook: analyze intake after user clicks Request analysis. Uses intakeBundle from payload; POST results to Platform callback.",
   "workflow": {
-    "triggers": [],
+    "triggers": [
+      {
+        "webhook": {}
+      }
+    ],
     "actions": [],
     "prompts": [
       {
-        "prompt": "You are the Marketing Autopilot intake analyst.\n\nRepo: jamesteng2010/marketing-autopilot\nRead: docs/product/intake-and-materials.md, intake/active.json, materials.items, intake/analysis/feasibility.template.md\nFollow: automations/instructions/05-intake-analysis.txt\n\nPayload must include projectId. Analyze all pending materials. Write intake/analysis/feasibility.md and extracted.json. Summarize findings for the user in clear language. Do NOT generate full strategy or campaigns until userConfirmedAnalysis is true.\n\nCommit: intake: feasibility analysis"
+        "prompt": "You are the Marketing Autopilot intake analyst (Automation 05).\n\n## Trigger\nThis run was started by an HTTP webhook from the Platform API after a user clicked **Request analysis**. The webhook JSON body is in the user message — read `userId`, `projectId`, `correlationId`, `intakeBundle`, and `callbackUrl`.\n\n## Instructions\nFollow `automations/instructions/05-intake-analysis.txt` in the marketing-autopilot repo.\n\n## Data source\n- **Do not** assume local `PROJECT_ROOT` on the server exists in this cloud workspace.\n- Use `intakeBundle` from the webhook for product, audience, existing marketing, materials, and site scan (`existingMarketingAnalysis`).\n- Read `docs/product/intake-and-materials.md` and `intake/analysis/feasibility.template.md` from the repo for output structure.\n\n## Outputs\n1. Write `feasibilityMarkdown` — full user-facing report (English unless intake is Chinese-only).\n2. Write `extracted` — JSON matching `intake/analysis/extracted.template.json` (include existingMarketingBaseline continue/fix/add).\n\n## Deliver results to Platform (required)\nPOST to `callbackUrl` from the webhook body:\n\n```\nPOST {callbackUrl}\nHeaders:\n  Content-Type: application/json\n  X-Automation-Token: <AUTOMATION_CALLBACK_TOKEN from Cursor Automation secrets>\nBody:\n{\n  \"userId\": \"<from webhook>\",\n  \"projectId\": \"<from webhook>\",\n  \"correlationId\": \"<from webhook>\",\n  \"status\": \"completed\",\n  \"feasibilityMarkdown\": \"<full markdown>\",\n  \"extracted\": { ... }\n}\n```\n\nOn failure, POST `{ \"status\": \"failed\", \"errorSummary\": \"...\" }` with the same ids.\n\n## Rules\n- Do NOT set userConfirmedAnalysis.\n- Do NOT generate strategy, phases, or campaigns.\n- Do not invent metrics or URLs not present in intakeBundle.\n- Summarize 3–5 bullets for the user at the end of your run message."
       }
     ],
     "model": "",

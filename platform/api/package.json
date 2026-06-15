@@ -6,9 +6,18 @@
   "description": "Marketing Autopilot Platform API (v0.2 skeleton)",
   "scripts": {
     "dev": "node src/server.mjs",
-    "start": "node src/server.mjs"
+    "start": "node src/server.mjs",
+    "test": "node test/auth.test.mjs && node test/intake.test.mjs",
+    "test:auth": "node test/auth.test.mjs",
+    "test:intake": "node test/intake.test.mjs"
   },
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.758.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.5"
   }
 }

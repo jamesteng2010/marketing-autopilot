@@ -1,5 +1,7 @@
 # Deployment Guide
 
+**AWS 开发资源清单（EC2 / RDS / 环境变量）** → [infrastructure/aws-dev-environment.md](./infrastructure/aws-dev-environment.md)
+
 ## Cursor Cloud (default)
 
 1. Push this repo to GitHub.

@@ -1,0 +1,188 @@
+/* Marketing Autopilot auth — light theme (product UI) */
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --accent: #0891b2;
+  --accent-hover: #0e7490;
+  --success-bg: #ecfdf5;
+  --success-text: #047857;
+  --error-bg: #fef2f2;
+  --error-text: #b91c1c;
+  --info-bg: #ecfeff;
+  --info-text: #0e7490;
+  --shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 8px 24px rgba(15, 23, 42, 0.06);
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  background: linear-gradient(180deg, #f1f5f9 0%, #f8fafc 40%, #ffffff 100%);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.wrap { width: 100%; max-width: 440px; }
+
+.brand {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.brand h1 {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.brand p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.tabs button.active {
+  background: #fff;
+  color: var(--text);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  padding: 11px 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: 2px solid rgba(8, 145, 178, 0.25);
+  border-color: var(--accent);
+}
+
+button.primary {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button.primary:hover:not(:disabled) { background: var(--accent-hover); }
+button.primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+button.link {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.msg {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  display: none;
+}
+
+.msg.show { display: block; }
+.msg.ok { background: var(--success-bg); color: var(--success-text); }
+.msg.err { background: var(--error-bg); color: var(--error-text); }
+.msg.info { background: var(--info-bg); color: var(--info-text); }
+
+.helper {
+  margin-top: 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.helper a, .helper button.link { color: var(--accent); text-decoration: none; }
+.helper a:hover, .helper button.link:hover { text-decoration: underline; }
+
+.forgot-row {
+  display: flex;
+  justify-content: flex-end;
+  margin: -8px 0 16px;
+}
+
+.icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--info-bg);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto 16px;
+}
+
+.center-text { text-align: center; }
+.center-text h2 { margin: 0 0 8px; font-size: 1.25rem; }
+.center-text p { margin: 0 0 20px; color: var(--muted); line-height: 1.5; }
+
+.hidden { display: none !important; }

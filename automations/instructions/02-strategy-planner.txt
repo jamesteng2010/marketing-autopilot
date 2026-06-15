@@ -38,6 +38,7 @@
    - runtime/credentials/schema.json
 
 3. 撰写 `strategy/active-plan.md`，KPI 表 **target 必须来自 intake.goals**（已 userConfirmedGoals），不得编造数字。
+   - 阅读 **`runtime/automation-policy.json`**（项目快照）与 `regions-catalog` 合规项
    - 已批准的 **marketing methods**（methodId + 区域）
    - 渠道优先级与理由（对齐 regions-catalog）
    - **分阶段 roadmap**（阶段名、每阶段 Automation 自动产出什么 artifact）

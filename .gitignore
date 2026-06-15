@@ -5,6 +5,7 @@ node_modules/
 .env
 .env.*
 !.env.example
+secrets.local.env
 
 # Active intake may contain PII — use private repo or redact
 intake/active.json

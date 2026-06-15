@@ -84,6 +84,7 @@ npm run marketing:dogfood:status
 
 ## 相关文档
 
+- [docs/development-standards.md](docs/development-standards.md) — **开发标准**（含用户进度反馈强制要求）
 - [docs/product/implementation.md](docs/product/implementation.md) — **产品实现技术文档**（Platform API / UI / Worker）
 - [docs/product/automations.md](docs/product/automations.md) — Cursor Automations（5 个、trigger）
 - [docs/product/ui-design-system.md](docs/product/ui-design-system.md) — 产品 UI 样式与设计规范

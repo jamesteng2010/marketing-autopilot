@@ -337,27 +337,34 @@ Task 行样式：
 Intake **不是** 执行进度页；也 **不是** 最终 KPI 确认页（数字目标在 **Goals**）。  
 完整字段映射 `intake/template.json` — 人类说明 [user-intake-guide.md](../user-intake-guide.md)。
 
-#### 8.4.1 表单分区（建议 9 张卡片 + 侧栏进度）
+#### 8.4.1 表单分区（v0.2 产品 UI — **English primary**，**5 步向导**）
 
-| # | UI Section | `active.json` 字段 | 用户填什么 |
-|---|------------|-------------------|------------|
-| 1 | **Product** | `product.*` | 名称、URL、一句话、**完整描述**、定价模式 |
-| 2 | **Target market** | `audience.*` | ICP、**目标国家/区域**、语言、**痛点** |
-| 3 | **Promotion intent** | `marketing.*`（非 goals 数字） | 偏好手段/渠道、avoid、**月预算**、品牌调性、合规说明 |
-| 4 | **Existing marketing** | `existingMarketing.*` | 是否已在跑、渠道状态、GA/FB/广告 ID、自由描述 |
-| 5 | **Brand identity** | `identity.*` | 域名、期望品牌邮箱（Identity Gate 前置） |
-| 6 | **Account strategy** | `marketing.accountStrategy` | 用已有社媒 vs 允许自动创建（需批准） |
-| 7 | **Product data**（可折叠） | `productData.*` | 是否有产品 DB / Metrics API（L3 KPI） |
-| 8 | **Materials** | `materials.items[]` | 上传 URL/图/视频/PDF/粘贴长文 |
-| 9 | **Runtime** | `runtime.preferred` | Cloud / hybrid / local worker 偏好 |
+| # | UI Step | `active.json` 字段 | 用户填什么 |
+|---|---------|-------------------|------------|
+| 1 | **Product** | `product.*`（**no pricing**） | Name, URL, one-liner, description; **Import from website** |
+| 2 | **Target market** | `audience.*` | **ICP**（auto-suggested from URL/copy, **editable**）, target regions (English catalog labels), pain points; optional **Suggest from product info** |
+| 3 | **Brand & preferences** | `identity.*` + `marketing.accountStrategy` | Custom domain, brand email, **use existing social accounts** |
+| 4 | **Current marketing** | `existingMarketing.*` | Yes/no; if **yes** → multiple `activities[]` |
+| 5 | **Materials & review** | `materials.items[]` + submit | Uploads, URLs; review summary; **Request analysis** |
 
-**Goals 初填（可选）：** Intake 可放「推广意向」短文或 rough KPI 想法；**正式 target/deadline/measurement** 仅在 **Goals** 页 `userConfirmedGoals` 锁定。
+**Not on Intake UI（v0.2）：**
 
-**侧栏 Intake 进度条：** 必填 completion %（product.name + url + audience.primary + geographyRegions + hasActiveMarketing）。
+| 字段 | 说明 |
+|------|------|
+| `marketing.brandTone` | 默认 `professional`；由 [automation-policy.md](./automation-policy.md) `defaultBrandTone` 注入 |
+| `marketing.complianceNotes` | **平台管理员** 在 `runtime/automation-policy.json` 配置，分析时写入项目快照 |
+| Pricing / monthly budget | Goals 或其他页面 |
+| Runtime preference | 内部默认 `cloud` |
 
-Region 选中后：推荐 methods **accent 边框**；avoid **opacity-50 + tooltip**。
+**ICP hint（Step 2）：** “Who is your ideal customer? We suggest this from your product URL and description — edit freely.”
 
-Footer sticky：**Save**（debounce 自动保存 + toast）· **Request analysis**（primary，最小必填满足后启用）。
+**Free trial banner:** “Free trial — no pricing needed on this page.”
+
+**Region chips:** English only (e.g. `United States`, `China`) — store `geographyRegions` codes (`US`, `CN`, …).
+
+**i18n:** Chinese (and others) later via locale files; v0.2 ships **English UI** first.
+
+> 旧版文档中的 7-card 单页布局已合并为上述 5 步向导；`Promotion preferences` / 独立 `Account strategy` / `Brand identity` card 不再对用户分开展示。
 
 可选 v0.3：**右侧 Agent 面板** 对话补全缺项（对接 Onboarding Automation）— 非 v0.2 默认。
 

@@ -45,7 +45,11 @@ flowchart TD
 Intake 必问：
 
 1. **是否已有正在进行的营销活动？** `existingMarketing.hasActiveMarketing`  
-2. **渠道多选**（来自 catalog）：SEO、GA4、Facebook 主页、Meta 广告、Google Ads、邮件、LinkedIn…  
+2. **渠道记录**（来自 catalog，UI 按 **uiGroup** 分组展示；存储仍用具体 `channelId`）：
+   - **Website & measurement** — SEO、GA4、GTM、Meta Pixel  
+   - **Organic social** — Facebook、Instagram、LinkedIn、X  
+   - **Paid advertising** — Meta Ads、Google Ads（Intake 可选填月花费 USD）  
+   - **Email & CRM** — 邮件营销、CRM  
 3. **每渠道简要状态**：进行中 / 暂停 / 仅计划 / 没有  
 4. **已知 ID/链接**（有则填）：  
    - 官网 URL（通常已有 `product.url`）  

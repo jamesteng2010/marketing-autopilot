@@ -17,7 +17,9 @@ Import prefill JSON into **Cursor → Automations → New automation**.
 | Phase | Runner | Command |
 |-------|--------|---------|
 | **A — Prepare** | Platform / Node | `npm run marketing:analyze:prepare` or `POST .../intake/analyze` |
-| **B — LLM + feasibility** | Cursor Automation 05 | Webhook after phase A |
+| **B — LLM + feasibility** | **OpenAI on EC2** (preferred) or **Cursor Automation 05** webhook |
+
+**Setup guide:** [infra/automations/SETUP.md](../infra/automations/SETUP.md)
 
 Phase A: validate intake → passive site scan → `existing-marketing.json` → activity log → optional webhook.
 

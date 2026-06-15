@@ -20,6 +20,17 @@ export function validateIntakeForAnalysis(intake) {
   if (intake.existingMarketing?.hasActiveMarketing === null || intake.existingMarketing?.hasActiveMarketing === undefined) {
     errors.push('existingMarketing.hasActiveMarketing must be answered (true/false)');
   }
+  if (intake.existingMarketing?.hasActiveMarketing === true) {
+    const acts = intake.existingMarketing?.activities || [];
+    if (!acts.length) {
+      errors.push('existingMarketing.activities requires at least one record when marketing is active');
+    } else {
+      for (const a of acts) {
+        if (!a.platform?.trim()) errors.push('Each marketing activity needs a platform');
+        if (!a.summary?.trim()) errors.push('Each marketing activity needs a description of what was done');
+      }
+    }
+  }
   return { ok: errors.length === 0, errors };
 }
 

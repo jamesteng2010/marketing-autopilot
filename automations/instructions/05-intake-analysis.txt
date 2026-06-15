@@ -53,4 +53,16 @@ scope: 当前项目的 userId + projectId（只读写本项目路径）
 
 10. **活动日志：** 整个 run 写 `automation.run_started/completed`；分步写 `analysis.*`（含 site_scan、market_feasibility_scored、analysis.completed），每条带 **summary** 到 `ops/activity/events.jsonl`
 
+## Platform callback（SaaS / EC2 租户工作区）
+
+Cloud Agent **无法** 直接写 EC2 上的 `tenants/.../projects/{projectId}/`。完成分析后 **必须** POST 到 Platform：
+
+- URL：`callbackUrl`（webhook body 内，一般为 `https://api.myreceipt.website/api/internal/automation/callback`）
+- Header：`X-Automation-Token: <AUTOMATION_CALLBACK_TOKEN>`（Cursor Automation 环境变量）
+- Body：`userId`, `projectId`, `correlationId`, `status: completed`, `feasibilityMarkdown`, `extracted`
+
+数据源：webhook 内的 `intakeBundle`（含 intake + site scan），勿依赖本地 PROJECT_ROOT。
+
+若 Platform 已配置 `OPENAI_API_KEY`，Phase B 可能在服务器已完成 — webhook 仅作备用。
+
 禁止：跨项目读文件；编造资料中不存在的事实；建议「从零新建 GA」当扫描已发现 GA4；在用户未确认前生成 campaigns；**禁止** 跳过 activity 日志。

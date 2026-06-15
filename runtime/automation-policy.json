@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-14T00:00:00.000Z",
+  "description": "Platform-wide rules for automations. Edit via admin API or this file on the server — not shown to end users in Intake.",
+  "complianceNotes": "No cold DMs or mass outreach without explicit per-project approval. No false, absolute, or fear-based claims. Respect regional laws (GDPR, CAN-SPAM, PIPL, etc.) from regions-catalog. Child-safety products: privacy-first messaging only.",
+  "forbiddenActions": [
+    "social.dm",
+    "social.mass_connect"
+  ],
+  "contentRules": [
+    "Do not promise guaranteed signups, revenue, or rankings",
+    "Use assistive language (help, support) not guarantees",
+    "Disclose beta / AI-assisted content where platforms require it",
+    "Child or family products: no scare tactics; no minors' PII in marketing forms"
+  ],
+  "defaultBrandTone": "professional",
+  "requireUserApprovalFor": {
+    "coldDm": true,
+    "accountCreate": true,
+    "massConnect": true
+  }
+}

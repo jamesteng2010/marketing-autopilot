@@ -113,8 +113,9 @@ Intake 表单除产品资料外，必须收集 **当前营销现状**：
 | 字段 | 说明 |
 |------|------|
 | `hasActiveMarketing` | 是否已在跑营销 |
-| `userSummary` | 自由描述现有活动 |
-| `channelsUserDeclared[]` | 渠道 + status（active/paused/none）+ 用户提供的 URL/ID |
+| `activities[]` | **多条结构化记录**（v0.2+）：`platform`（catalog channelId）、`status`、`summary`（已做事项）、`linkOrId`、可选 `monthlySpendUsd` |
+| `userSummary` | 自由描述（可选补充） |
+| `channelsUserDeclared[]` | 渠道 + status（可由 activities 同步或扫描推断） |
 | `analytics` / `organicSocial` / `paidAds` / `seo` | 结构化已知信息 |
 | `assetsNeededFromUser[]` | Analysis 后仍缺、需用户补的项 |
 
@@ -214,7 +215,7 @@ Automation 必须生成的章节（给用户看）：
 ### 6.1 我们理解到的信息
 
 - 产品是什么、解决什么问题（引用自资料与表单）  
-- 目标受众与地区（推断 + 用户填写对照）  
+- 目标受众与地区（推断 + 用户填写对照；ICP 可来自网站导入 / suggest-audience）  
 - 品牌调性、视觉风格（来自图片/视频/文案）  
 - 已有资产：官网、社交、素材质量简评  
 
@@ -228,7 +229,7 @@ Automation 必须生成的章节（给用户看）：
 | **按手段** | 各 methodId 可行性 H/M/L/Blocked + 是否可 Automation |
 | **内容是否够用** | 现有素材能否支撑所选手段 |
 | **预算与目标** | 含 `requiresPaidBudget` 手段是否可承受 |
-| **合规** | region.compliance + 平台 ToS |
+| **合规** | `regions-catalog` 各 region + **平台** `automation-policy.json`（管理员）+ 平台 ToS |
 
 输出 `extracted.methodFeasibility[]`。集成说明：[integration-marketing-catalog.md](./integration-marketing-catalog.md)
 
@@ -282,16 +283,54 @@ Planner **必须** 同时读 `active.json`、`extracted.json`、`feasibility.md`
 
 ## 8. UI 要求（Product）
 
+**界面语言：** **English primary** (v0.2). Target regions show **English catalog labels** (`United States`, `China`, …). i18n (e.g. Chinese) later.
+
+**Intake 页禁止出现：** 定价模式、月预算、Runtime 偏好（默认 cloud，见 Settings/运维）。
+
+**免费试用：** 项目列表与 Intake 顶栏提示「当前为免费试用，无需填写定价」。
+
+**从网站导入：** 用户填写 `product.url` 后自动/手动触发 `POST …/intake/import-website` → 填充产品文案、**建议 ICP 与痛点**、目标区域、分析标签、社交链接；若检测到营销痕迹则生成 `activities[]` 草稿供用户确认。详见 §8.1。
+
+**ICP 自动推断：** 不强制用户从零写理想客户画像。系统从官网 meta/H1/产品描述等推断 `audience.primary` 与 `audience.painPoints`，用户 **可自由修改**。Step 2 另有 **Suggest from product info**（`POST …/intake/suggest-audience`）；若配置 `OPENAI_API_KEY` 则优先 AI，否则规则推断。字段可带 `audience.primarySource` / `primaryInference` 元数据。
+
 | 模块 | 功能 |
 |------|------|
+| **产品** | 名称、URL、描述；**不含定价**；网站导入 |
+| **目标市场** | **ICP（可自动建议 + 可编辑）**、**区域多选（catalog）**、痛点 |
+| **品牌与偏好** | 自定义域名、品牌邮箱、是否优先用已有社媒账号（**不含** Brand tone / Compliance notes） |
+| **现有营销** | 是/否；若 **是** → **多条 activities**（平台下拉、状态、已做事项、链接） |
 | **资料库** | 列表：类型图标、标题、分析状态、摘要预览 |
 | **上传区** | 多文件、URL 输入、粘贴长文本 |
 | **分析进度** | pending / processing / done / failed |
 | **可行性报告页** | 渲染 feasibility.md；**现有营销发现卡片**；高亮 Continue/Fix/Add |
 | **缺口补全** | `assetsNeededFromUser` → 补 GA 授权、Facebook 主页 URL 等 |
-| **Goal Workshop** | 选 KPI、target、deadline、测量源；确认 `userConfirmedGoals` |
-| **产品数据（可选）** | 是否接 DB/API、kpiMappings — 见 product-data-connectors |
+| **Goal Workshop** | 选 KPI、target、deadline、测量源、**预算**；确认 `userConfirmedGoals` |
 | **确认 CTA** | 可行性 + **目标** 均确认后 → Strategy Planner |
+
+### 8.1 Intake 向导步骤（v0.2 已实现 UI）
+
+| Step | 标题 | 内容 |
+|------|------|------|
+| 1 | Product | 名称、URL、one-liner、描述；Import from website |
+| 2 | Target market | ICP*、区域*、痛点；Suggest from product info |
+| 3 | Brand & preferences | 域名、品牌邮箱、优先使用已有社媒（**无** tone / compliance 表单项） |
+| 4 | Current marketing | 是否已有营销；多条 `activities[]` |
+| 5 | Materials & review | 上传资料、摘要确认、Request analysis |
+
+\* 必填项。ICP = Ideal Customer Profile（理想客户画像）— 一句话描述最想卖给谁；见 [glossary.md](./glossary.md)。
+
+### 8.2 网站导入与受众 API
+
+| API | 说明 |
+|-----|------|
+| `POST /api/projects/:id/intake/import-website` | `{ url?, force? }` — 被动扫描 + 合并 intake patch |
+| `POST /api/projects/:id/intake/suggest-audience` | `{ force? }` — 仅从当前 `product.*` 建议 ICP/痛点（不重新抓站） |
+
+实现：`runtime/analysis/website-import.mjs`、`runtime/analysis/infer-audience.mjs`。
+
+### 8.3 平台合规（不对用户展示）
+
+Brand tone、Compliance notes **不在 Intake 收集**；由管理员维护 `runtime/automation-policy.json`，分析时快照到项目。见 [automation-policy.md](./automation-policy.md)。
 
 ---
 
@@ -327,3 +366,4 @@ Planner **必须** 同时读 `active.json`、`extracted.json`、`feasibility.md`
 - [automation-commander.md](./automation-commander.md) — 确认后进入 Phase Loop（全用户 · 全项目）  
 - [features.md](./features.md) — F1.4 多模态资料  
 - [../user-intake-guide.md](../user-intake-guide.md)
+- [automation-policy.md](./automation-policy.md) — 平台合规与禁止动作（管理员）

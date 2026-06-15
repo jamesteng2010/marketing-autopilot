@@ -1,6 +1,12 @@
 {
   "version": 1,
   "description": "Existing marketing channel types and how Automation discovers or asks the user during Intake",
+  "uiGroups": [
+    { "id": "website_measurement", "labelEn": "Website & measurement", "order": 1 },
+    { "id": "organic_social", "labelEn": "Organic social", "order": 2 },
+    { "id": "paid_ads", "labelEn": "Paid advertising", "order": 3 },
+    { "id": "email_crm", "labelEn": "Email & CRM", "order": 4 }
+  ],
   "discoveryMethods": {
     "passive_site_scan": "Crawl product.url / materials URLs without credentials",
     "user_form": "User fills structured fields in Product UI",
@@ -11,6 +17,7 @@
   "channels": [
     {
       "channelId": "website_seo",
+      "uiGroup": "website_measurement",
       "label": "官网与 SEO",
       "linkedMethodIds": ["website_seo"],
       "discoveryMethods": ["passive_site_scan", "user_form", "api_readonly"],
@@ -21,6 +28,7 @@
     },
     {
       "channelId": "google_analytics",
+      "uiGroup": "website_measurement",
       "label": "Google Analytics (GA4)",
       "linkedMethodIds": ["website_seo", "content_marketing"],
       "discoveryMethods": ["passive_site_scan", "user_form", "api_readonly"],
@@ -31,6 +39,7 @@
     },
     {
       "channelId": "google_tag_manager",
+      "uiGroup": "website_measurement",
       "label": "Google Tag Manager",
       "discoveryMethods": ["passive_site_scan", "user_form"],
       "passiveSignals": ["gtm_container_script"],
@@ -38,6 +47,7 @@
     },
     {
       "channelId": "meta_pixel",
+      "uiGroup": "website_measurement",
       "label": "Meta Pixel",
       "linkedMethodIds": ["meta_ads", "retargeting"],
       "discoveryMethods": ["passive_site_scan", "user_form", "api_readonly"],
@@ -48,6 +58,7 @@
     },
     {
       "channelId": "facebook_organic",
+      "uiGroup": "organic_social",
       "label": "Facebook 主页（有机）",
       "linkedMethodIds": ["social_organic"],
       "discoveryMethods": ["user_form", "passive_site_scan", "material_inference", "api_readonly"],
@@ -58,6 +69,7 @@
     },
     {
       "channelId": "instagram_organic",
+      "uiGroup": "organic_social",
       "label": "Instagram（有机）",
       "linkedMethodIds": ["social_organic"],
       "discoveryMethods": ["user_form", "passive_site_scan", "material_inference"],
@@ -67,6 +79,7 @@
     },
     {
       "channelId": "meta_ads",
+      "uiGroup": "paid_ads",
       "label": "Meta 广告（Facebook / Instagram Ads）",
       "linkedMethodIds": ["meta_ads"],
       "discoveryMethods": ["user_form", "api_readonly", "material_inference"],
@@ -76,6 +89,7 @@
     },
     {
       "channelId": "google_ads",
+      "uiGroup": "paid_ads",
       "label": "Google Ads",
       "linkedMethodIds": ["search_ads", "display_ads"],
       "discoveryMethods": ["user_form", "api_readonly"],
@@ -85,6 +99,7 @@
     },
     {
       "channelId": "email_marketing",
+      "uiGroup": "email_crm",
       "label": "邮件营销",
       "linkedMethodIds": ["email_drip", "newsletter"],
       "discoveryMethods": ["user_form", "passive_site_scan", "material_inference"],
@@ -93,6 +108,7 @@
     },
     {
       "channelId": "linkedin_organic",
+      "uiGroup": "organic_social",
       "label": "LinkedIn 公司页 / 个人",
       "linkedMethodIds": ["social_organic", "b2b_outbound"],
       "discoveryMethods": ["user_form", "passive_site_scan"],
@@ -100,7 +116,8 @@
       "userFields": ["companyPageUrl", "personalProfileUrl"]
     },
     {
-      "channelId": "twitter_x",
+      "channelId": "twitter_organic",
+      "uiGroup": "organic_social",
       "label": "X (Twitter)",
       "linkedMethodIds": ["social_organic"],
       "discoveryMethods": ["user_form", "passive_site_scan"],
@@ -108,6 +125,7 @@
     },
     {
       "channelId": "crm",
+      "uiGroup": "email_crm",
       "label": "CRM / 线索库",
       "linkedMethodIds": ["sales_enablement"],
       "discoveryMethods": ["user_form"],

@@ -159,8 +159,10 @@ GitHub 仓库是 **平台工程与 Provisioning 模板**，不是客户入口。
 
 **行为：**
 
-- UI 支持拖拽上传、URL、粘贴长文本；**现有营销问卷**（是否在跑、渠道、链接/ID）  
-- 用户点击「开始分析」→ **Intake Analysis Automation**：多模态解析 + **站点被动扫描** + 合并现有营销基线  
+- UI：**5 步向导**（Product → Target market → Brand & preferences → Current marketing → Materials & review）；支持拖拽上传、URL、粘贴长文本；**现有营销问卷**  
+- **网站导入** 自动填充产品信息与 **建议 ICP**；用户可编辑或点击 Suggest from product info  
+- **Brand tone / Compliance notes 不在 Intake 展示** — 合规由平台 `automation-policy.json` 管理（见 [automation-policy.md](./automation-policy.md)）  
+- 用户点击「开始分析」→ **Intake Analysis Automation**：多模态解析 + **站点被动扫描** + **平台 policy 快照** + 合并现有营销基线  
 - 分析完成后 UI 展示 feasibility 报告 **及** 已发现 GA/Pixel/SEO/社交等；列出 `assetsNeededFromUser`  
 - 用户 **确认可行性** 后进入 **Goal Workshop**，**共同确认** KPI 与测量方式（`goals.userConfirmedGoals`）  
 - **两者均确认后** Strategy Planner 按 Continue/Fix/Add + **已确认目标** 生成 phases/campaigns  
@@ -445,6 +447,7 @@ Free：Intake + 可行性 + 现有营销盘点；**不** 含 run-phase 执行。
 - **产品 UI 样式规范**：[ui-design-system.md](./ui-design-system.md)
 - **Greenfield Identity Gate**：[greenfield-identity-gate.md](./greenfield-identity-gate.md)
 - Intake 字段说明：[../user-intake-guide.md](../user-intake-guide.md)
+- 平台 Automation 合规策略：[automation-policy.md](./automation-policy.md)
 - 部署指南：[../deployment-guide.md](../deployment-guide.md)
 - Agent 合约：[../../AGENTS.md](../../AGENTS.md)
 - 手段与区域：[marketing-methods.md](./marketing-methods.md) · [channels-by-region.md](./channels-by-region.md)

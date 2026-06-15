@@ -20,6 +20,39 @@ function extractMetaDescription(html) {
   return m ? m[1].trim().slice(0, 300) : null;
 }
 
+function extractMetaProperty(html, prop) {
+  const re = new RegExp(
+    `<meta[^>]+property=["']${prop}["'][^>]+content=["']([^"']+)["']|<meta[^>]+content=["']([^"']+)["'][^>]+property=["']${prop}["']`,
+    'i',
+  );
+  const m = html.match(re);
+  return m ? (m[1] || m[2]).trim().slice(0, 500) : null;
+}
+
+function extractHtmlLang(html) {
+  const m = html.match(/<html[^>]+lang=["']([^"']+)["']/i);
+  return m ? m[1].trim().slice(0, 16) : null;
+}
+
+function extractHreflangRegions(html) {
+  const regions = new Set();
+  const re = /<link[^>]+rel=["']alternate["'][^>]+hreflang=["']([^"']+)["']/gi;
+  let m;
+  while ((m = re.exec(html)) !== null) {
+    const hl = m[1].toLowerCase();
+    if (hl === 'x-default') continue;
+    if (hl.startsWith('zh')) regions.add('CN');
+    else if (hl.startsWith('ja')) regions.add('JP');
+    else if (hl.startsWith('en')) regions.add('GLOBAL_EN');
+    else if (hl.startsWith('de') || hl.startsWith('fr') || hl.startsWith('es') || hl.startsWith('it')) regions.add('EU');
+  }
+  return [...regions];
+}
+
+function extractOgLocale(html) {
+  return extractMetaProperty(html, 'og:locale');
+}
+
 function extractH1(html) {
   const m = html.match(/<h1[^>]*>([^<]*)<\/h1>/i);
   return m ? m[1].replace(/<[^>]+>/g, '').trim().slice(0, 200) : null;
@@ -27,6 +60,7 @@ function extractH1(html) {
 
 function findSocialLinks(html) {
   const found = new Set();
+  const urls = {};
   const patterns = [
     { id: 'facebook', re: /https?:\/\/(www\.)?facebook\.com\/[^\s"'<>]+/gi },
     { id: 'instagram', re: /https?:\/\/(www\.)?instagram\.com\/[^\s"'<>]+/gi },
@@ -34,10 +68,14 @@ function findSocialLinks(html) {
     { id: 'twitter', re: /https?:\/\/(www\.)?(twitter\.com|x\.com)\/[^\s"'<>]+/gi },
   ];
   for (const { id, re } of patterns) {
-    if (re.test(html)) found.add(id);
+    const match = html.match(re);
+    if (match) {
+      found.add(id);
+      urls[id] = match[0].replace(/["'<>].*$/, '');
+    }
     re.lastIndex = 0;
   }
-  return [...found];
+  return { ids: [...found], urls };
 }
 
 function detectTags(html) {
@@ -84,6 +122,16 @@ export async function scanSiteUrl(siteUrl) {
   }
   const html = await res.text();
   const tags = detectTags(html);
+  const title = extractTitle(html);
+  const metaDescription = extractMetaDescription(html);
+  const h1 = extractH1(html);
+  const ogTitle = extractMetaProperty(html, 'og:title');
+  const ogDescription = extractMetaProperty(html, 'og:description');
+  const ogSiteName = extractMetaProperty(html, 'og:site_name');
+  const htmlLang = extractHtmlLang(html);
+  const hreflangRegions = extractHreflangRegions(html);
+  const ogLocale = extractOgLocale(html);
+  const social = findSocialLinks(html);
   const origin = new URL(siteUrl).origin;
   const sitemapUrl = `${origin}/sitemap.xml`;
   const robotsUrl = `${origin}/robots.txt`;
@@ -93,17 +141,24 @@ export async function scanSiteUrl(siteUrl) {
     siteUrl,
     passiveScan: {
       seo: {
-        titlePresent: Boolean(extractTitle(html)),
-        title: extractTitle(html),
-        metaDescription: extractMetaDescription(html),
-        h1Present: Boolean(extractH1(html)),
-        h1: extractH1(html),
+        titlePresent: Boolean(title),
+        title,
+        metaDescription,
+        h1Present: Boolean(h1),
+        h1,
+        ogTitle,
+        ogDescription,
+        ogSiteName,
+        htmlLang,
+        ogLocale,
+        hreflangRegions,
         hasSitemap: await headOk(sitemapUrl),
         hasRobots: await headOk(robotsUrl),
         issues: [],
       },
       tags,
-      socialLinksFound: findSocialLinks(html),
+      socialLinksFound: social.ids,
+      socialUrls: social.urls,
     },
     confidence: tags.ga4MeasurementId || tags.metaPixelId ? 'medium' : 'low',
   };
@@ -143,10 +198,11 @@ export async function runSiteScanForProject() {
       intake.existingMarketing.analytics.ga4.discoverySource = 'passive_site_scan';
     }
     if (scan.passiveScan.tags.metaPixelId) {
-      intake.existingMarketing.metaPixel = intake.existingMarketing.metaPixel || {};
-      if (!intake.existingMarketing.metaPixel.pixelId) {
-        intake.existingMarketing.metaPixel.pixelId = scan.passiveScan.tags.metaPixelId;
-        intake.existingMarketing.metaPixel.discoverySource = 'passive_site_scan';
+      intake.existingMarketing.analytics = intake.existingMarketing.analytics || {};
+      intake.existingMarketing.analytics.metaPixel = intake.existingMarketing.analytics.metaPixel || {};
+      if (!intake.existingMarketing.analytics.metaPixel.pixelId) {
+        intake.existingMarketing.analytics.metaPixel.pixelId = scan.passiveScan.tags.metaPixelId;
+        intake.existingMarketing.analytics.metaPixel.discoverySource = 'passive_site_scan';
       }
     }
     intake.existingMarketing.discovery = {

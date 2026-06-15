@@ -4,6 +4,7 @@ Marketing Autopilot 官方产品文档目录。技术实现见 [`../architecture
 
 | 文档 | 说明 | 读者 |
 |------|------|------|
+| [../development-standards.md](../development-standards.md) | **开发标准**（进度反馈、错误处理、安全、双链路） | 研发 |
 | [implementation.md](./implementation.md) | **产品实现技术文档**（架构、API、模块、分阶段） |
 | [PRD.md](./PRD.md) | 产品需求文档（主文档） | 产品、研发、运营 |
 | [automation-commander.md](./automation-commander.md) | **全用户 · 全项目** Automation 总指挥契约（phases / run-phase / progress） |

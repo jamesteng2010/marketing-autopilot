@@ -54,7 +54,9 @@
 | realistic 时间 | — | 策略中基于渠道类型的保守达成预期，非承诺 |
 | Worker | — | 长驻进程机器：EC2 PM2 或 Windows self-hosted |
 | dry-run | — | 不真正 outbound，仅模拟或日志 |
-| ICP | Ideal Customer Profile | 理想客户画像 |
+| ICP | Ideal Customer Profile | 理想客户画像 — 一句话描述最想卖给谁；Intake Step 2 可自动建议、用户可改 |
+| automation-policy | Platform automation policy | `runtime/automation-policy.json` — 管理员配置的全局合规与禁止动作 |
+| infer-audience | — | `runtime/analysis/infer-audience.mjs` — 从产品/网站文案推断 ICP 与痛点 |
 | KPI | Key Performance Indicator | 关键绩效指标 |
 
 ---

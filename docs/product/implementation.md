@@ -130,7 +130,7 @@ flowchart TB
 | 组件 | 建议 | 说明 |
 |------|------|------|
 | Platform API | Node 20 + Fastify 或 NestJS | 与 orchestrator 同语言 |
-| Platform DB | PostgreSQL | users, projects, billing, notification state |
+| Platform DB | MySQL 8 | users, projects, billing, notification state；dev 与 Kids Guard 同机 Docker，**独立库** `marketing-autopilot-dev` |
 | Auth | Clerk / Auth0 / 自建 JWT | 邮箱 OAuth |
 | Object storage | S3 兼容 | materials、大文件 |
 | Vault | AWS Secrets Manager / HashiCorp | `MA_{projectId}_*` 命名 |

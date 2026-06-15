@@ -5,9 +5,21 @@ REST API skeleton. 规格：[../docs/product/implementation.md](../docs/product/
 ## Run
 
 ```bash
-cd platform/api && npm run dev
+cd platform/api && cp .env.example .env   # set DB + JWT_SECRET
+npm install && npm run dev
 # GET  http://localhost:3001/health
+# UI   http://localhost:3001/auth
 ```
+
+## Auth (v0.2)
+
+| Method | Path | Body |
+|--------|------|------|
+| POST | `/api/auth/register` | `{ "email", "password", "displayName?" }` |
+| POST | `/api/auth/login` | `{ "email", "password" }` |
+| GET | `/api/auth/me` | Header: `Authorization: Bearer <token>` |
+
+Dev UI: `/auth` · Production: https://myreceipt.website/auth
 
 ## Automation 05 — Request analysis
 
@@ -25,6 +37,9 @@ Set `CURSOR_AUTOMATION_05_WEBHOOK_URL` to invoke Cursor Agent phase B.
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | `PORT` | 3001 | HTTP port |
+| `DB_HOST` / `DB_PORT` / `DB_NAME` / `DB_USER` / `DB_PASS` | — | MySQL Platform DB |
+| `JWT_SECRET` | — | Required for auth (min 32 chars recommended) |
+| `JWT_EXPIRES_IN` | 7d | Token lifetime |
 | `WORKSPACE_ROOT` | — | Multi-tenant root; else uses `{repo}/projects/{id}` |
 | `CURSOR_AUTOMATION_05_WEBHOOK_URL` | — | Cursor Automation 05 webhook |
 
